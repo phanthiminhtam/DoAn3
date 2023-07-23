@@ -1,0 +1,48 @@
+﻿@model Models.Framework.User
+
+@{
+    ViewBag.Title = "SỬA NGƯỜI DÙNG";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="col-lg-6" style="margin: auto">
+
+    <div class="card-box">
+        <h4 class="header-title" style="background-color: #fff; color: #3b4d5f; font-size: 22px ">NHẬP THÔNG TIN NGƯỜI DÙNG</h4>
+        @using (Html.BeginForm("Edit", "User", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" }, @placeholder = "nhập tên...", @class = "form-control", @required = "" })
+
+            <div class="form-group" style="margin-top:25px">
+                <label for="userName" style="font-size:20px">Tên đăng nhập<span class="text-danger">*</span></label>
+                @Html.TextBoxFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" }, @placeholder = "nhập tên...", @class = "form-control", @required = "" })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="pass1" style="font-size:20px">Mật khẩu<span class="text-danger">*</span></label>
+                <input type="password" class="form-control" name="Password" value="@Model.PassWord" placeholder="nhập mật khẩu..." required="" />
+                @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="checkbox0" style="font-size:20px">
+                    Tình trạng
+                </label>
+                <br />
+                @Html.CheckBoxFor(model => model.Active, new { @type = "checkbox", @id = "checkbox0", @style = "font-size:50px" })
+                @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group text-right mb-0">
+                <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
+                    SỬA
+                </button>
+                <a href="/Admin/User/Index" class="btn btn-secondary waves-effect waves-light">
+                    HUỶ
+                </a>
+            </div>
+        }
+
+    </div> <!-- end card-box -->
+</div>
+

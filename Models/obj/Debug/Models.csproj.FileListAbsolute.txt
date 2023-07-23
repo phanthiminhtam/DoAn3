@@ -1,0 +1,12 @@
+D:\MÔN HỌC NĂM 3_1\Lập trình mô hình MVC\WebsiteCosmetic\Models\bin\Debug\Models.dll.config
+D:\MÔN HỌC NĂM 3_1\Lập trình mô hình MVC\WebsiteCosmetic\Models\bin\Debug\Models.dll
+D:\MÔN HỌC NĂM 3_1\Lập trình mô hình MVC\WebsiteCosmetic\Models\bin\Debug\Models.pdb
+D:\MÔN HỌC NĂM 3_1\Lập trình mô hình MVC\WebsiteCosmetic\Models\bin\Debug\EntityFramework.dll
+D:\MÔN HỌC NĂM 3_1\Lập trình mô hình MVC\WebsiteCosmetic\Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\MÔN HỌC NĂM 3_1\Lập trình mô hình MVC\WebsiteCosmetic\Models\bin\Debug\EntityFramework.xml
+D:\MÔN HỌC NĂM 3_1\Lập trình mô hình MVC\WebsiteCosmetic\Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\MÔN HỌC NĂM 3_1\Lập trình mô hình MVC\WebsiteCosmetic\Models\obj\Debug\Models.csproj.AssemblyReference.cache
+D:\MÔN HỌC NĂM 3_1\Lập trình mô hình MVC\WebsiteCosmetic\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+D:\MÔN HỌC NĂM 3_1\Lập trình mô hình MVC\WebsiteCosmetic\Models\obj\Debug\Models.csproj.CopyComplete
+D:\MÔN HỌC NĂM 3_1\Lập trình mô hình MVC\WebsiteCosmetic\Models\obj\Debug\Models.dll
+D:\MÔN HỌC NĂM 3_1\Lập trình mô hình MVC\WebsiteCosmetic\Models\obj\Debug\Models.pdb

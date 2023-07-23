@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Models.Framework.SpecificProduct>
+
+@foreach (var item in Model)
+{
+    if (item.Offer != null)
+    {
+        <tr>
+            <td>@item.Product.ProName</td>
+            <td class="price">@item.Price</td>
+            <td class="price">@(item.Price-item.Price*item.Offer)</td>
+            <td>@item.Type</td>
+        </tr>
+    }
+}
+

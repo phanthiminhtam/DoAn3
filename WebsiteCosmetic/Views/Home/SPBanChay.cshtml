@@ -1,0 +1,30 @@
+﻿@model List<Models.Framework.SpecificProduct>
+<div class="swiper-wrapper">
+    @foreach (var item in Model)
+    {
+        if (item.Offer == null && item.StartedDate.Month < DateTime.Now.Month - 3)
+        {
+            <div class="product-listview-single-item product-color--green swiper-slide">
+                <div class="image-box">
+                    <a href="/SanPham/ChitietSP/@item.SpId" class="image-link">
+                        <img src="@item.Image" alt="">
+                        @*<img src="/Assets/Font/images/product/default/home-2/default-2.jpg" alt="">*@
+                    </a>
+                </div>
+                <div class="content">
+                    <h6 class="title"><a href="/SanPham/ChitietSP/@item.SpId">@item.Product.ProName</a></h6>
+                    <ul class="review-star">
+                        <li class="fill"><i class="ion-android-star"></i></li>
+                        <li class="fill"><i class="ion-android-star"></i></li>
+                        <li class="fill"><i class="ion-android-star"></i></li>
+                        <li class="fill"><i class="ion-android-star"></i></li>
+                        <li class="empty"><i class="ion-android-star"></i></li>
+                    </ul>
+                    <span class="price">@item.Price</span>
+                </div>
+            </div>
+        }
+     }
+    <!-- End Product Default Single Item -->
+</div>
+

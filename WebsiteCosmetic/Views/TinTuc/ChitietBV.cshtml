@@ -1,0 +1,382 @@
+﻿@model Models.Framework.News
+@{
+    ViewBag.Title = "ChitietBV";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<header class="header-section d-none d-xl-block">
+    <div class="header-wrapper">
+        <div class="header-bottom header-bottom-color--golden section-fluid sticky-header sticky-color--golden">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 d-flex align-items-center justify-content-between">
+                        <!-- Start Header Logo -->
+                        <div class="header-logo">
+                            <div class="logo">
+                                <a href="/"><img src="/Assets/Font/images/logo/logo_black.png" alt=""></a>
+                            </div>
+                        </div>
+                        <!-- End Header Logo -->
+                        <!-- Start Header Main Menu -->
+                        <div class="main-menu menu-color--black menu-hover-color--green">
+                            <nav>
+                                <ul>
+                                    <li class="has-dropdown">
+                                        <a class="active main-menu-link" href="/">Trang chủ </a>
+                                    </li>
+                                    <li class="has-dropdown has-megaitem">
+                                        <a href="/SanPham/ChitietSP"> Sản phẩm <i class="fa fa-angle-down"></i></a>
+                                        <!-- Mega Menu -->
+                                        <div class="mega-menu">
+                                            <ul class="mega-menu-inner">
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Trangdiem" class="mega-menu-item-title">Trang Điểm</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="shop-grid-sidebar-left.html">Cushion</a></li>
+                                                        <li><a href="shop-grid-sidebar-right.html">Kem nền</a></li>
+                                                        <li><a href="shop-full-width.html">Phấn má hồng</a></li>
+                                                        <li><a href="shop-list-sidebar-left.html">Xịt khoáng</a></li>
+                                                        <li><a href="shop-list-sidebar-right.html">Son Môi</a></li>
+                                                        <li><a href="shop-list-sidebar-left.html">Son dưỡng</a></li>
+                                                        <li><a href="shop-list-sidebar-right.html">Phấn mắt</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Chamsocda" class="mega-menu-item-title">Chăm Sóc Da</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="cart.html">Mask giấy</a></li>
+                                                        <li><a href="empty-cart.html">Mặt nạ</a></li>
+                                                        <li><a href="wishlist.html">Sữa rửa mặt</a></li>
+                                                        <li><a href="compare.html">Dưỡng da mặt</a></li>
+                                                        <li><a href="checkout.html">Tẩy da chết</a></li>
+                                                        <li><a href="login.html">Dưỡng da mắt</a></li>
+                                                        <li><a href="my-account.html">Lotion</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Nuochoa" class="mega-menu-item-title">Nước Hoa</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="ChitietSP.html">Nước hoa nữ</a></li>
+                                                        <li><a href="product-details-variable.html">Nước hoa nam</a></li>
+                                                        <li><a href="product-details-affiliate.html">Xịt body</a></li>
+                                                        <li><a href="product-details-group.html">Sữa tắm</a></li>
+                                                        <li><a href="product-details-single-slide.html">Tẩy lông</a></li>
+                                                        <li><a href="product-details-group.html">Sữa dưỡng thể</a></li>
+                                                        <li><a href="product-details-single-slide.html">Kem dưỡng tay</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Phukien" class="mega-menu-item-title">Phụ Kiện</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="product-details-tab-left.html">Dụng cụ trang điểm</a></li>
+                                                        <li><a href="product-details-tab-right.html">Phụ kiện làm đẹp</a></li>
+                                                        <li><a href="product-details-gallery-left.html">Sơn móng tay</a></li>
+                                                        <li><a href="product-details-gallery-right.html">Rửa móng</a></li>
+                                                        <li><a href="product-details-sticky-left.html">Mút đánh phấn</a></li>
+                                                        <li><a href="product-details-sticky-right.html">Mặt nạ nén</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <div class="menu-banner">
+                                                <a href="#" class="menu-banner-link">
+                                                    <img class="menu-banner-img" src="/Assets/Font/images/banner/banner-blackV.jpg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="/Home/Khuyenmai">Khuyến mãi</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="#">Tin tức<i class="fa fa-angle-down"></i></a>
+                                        <!-- Sub Menu -->
+                                        <ul class="sub-menu">
+                                            <li><a href="/Home/About">Về chúng tôi</a></li>
+                                            <li><a href="/Tintuc/Review">Review sản phẩm</a></li>
+                                            <li><a href="/Tintuc/CSdoitra">Chính sách đổi trả</a></li>
+                                            <li><a href="/Tintuc/Login">Đăng nhập</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">Thương Hiệu <i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="#">3CE</a></li>
+                                            <li><a href="#">3W Clinic</a></li>
+                                            <li><a href="">A'PIEU</a></li>
+                                            <li><a href="">Aritaum</a></li>
+                                            <li><a href="">Avene</a></li>
+                                            <li><a href="">Bath and body works</a></li>
+                                            <li><a href="">Benton</a></li>
+                                            <li><a href="">Biodema</a></li>
+                                            <li><a href="">Careline</a></li>
+                                            <li><a href="">City color</a></li>
+                                            <li><a href="">Covergril</a></li>
+                                            <li><a href="">DHC</a></li>
+                                            <li><a href="">Dr.Belmeur</a></li>
+                                            <li><a href="">Etude House</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/Home/Contact">Liên hệ</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- End Header Main Menu Start -->
+                        <!-- Start Header Action Link -->
+                        <ul class="header-action-link action-color--black action-hover-color--green">
+                            <li>
+                                <a href="#offcanvas-wishlish" class="offcanvas-toggle">
+                                    <i class="icon-heart"></i>
+                                    <span class="item-count">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#offcanvas-add-cart" class="offcanvas-toggle">
+                                    <i class="icon-bag"></i>
+                                    <span class="item-count">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#search">
+                                    <i class="icon-magnifier"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">
+                                    <i class="icon-menu"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- End Header Action Link -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Start Header Area -->
+<!-- Start Mobile Header -->
+<div class="mobile-header mobile-header-bg-color--golden section-fluid d-lg-block d-xl-none">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex align-items-center justify-content-between">
+                <!-- Start Mobile Left Side -->
+                <div class="mobile-header-left">
+                    <ul class="mobile-menu-logo">
+                        <li>
+                            <a href="/">
+                                <div class="logo">
+                                    <img src="/Assets/Font/images/logo/logo_black.png" alt="">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Mobile Left Side -->
+                <!-- Start Mobile Right Side -->
+                <div class="mobile-right-side">
+                    <ul class="header-action-link action-color--black action-hover-color--golden">
+                        <li>
+                            <a href="#search">
+                                <i class="icon-magnifier"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#offcanvas-wishlish" class="offcanvas-toggle">
+                                <i class="icon-heart"></i>
+                                <span class="item-count">3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#offcanvas-add-cart" class="offcanvas-toggle">
+                                <i class="icon-bag"></i>
+                                <span class="item-count">3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#mobile-menu-offcanvas" class="offcanvas-toggle offside-menu">
+                                <i class="icon-menu"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Mobile Right Side -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="breadcrumb-section breadcrumb-bg-color--golden">
+    <div class="breadcrumb-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="breadcrumb-title">Chi tiết Review sản phẩm</h3>
+                    <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                        <nav aria-label="breadcrumb">
+                            <ul>
+                                <li><a href="Trangchu.html">Trang chủ</a></li>
+                                <li><a href="#">Tin tức</a></li>
+                                <li class="active" aria-current="page">Chi tiết review sản phẩm</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- ...:::: End Breadcrumb Section:::... -->
+<!-- ...:::: Start Blog List Section:::... -->
+<div class="blog-section">
+    <div class="container">
+        <div class="row flex-column-reverse flex-lg-row">
+            <div class="col-lg-3">
+                <!-- Start Sidebar Area -->
+                <div class="siderbar-section" data-aos="fade-up" data-aos-delay="0">
+
+                    <!-- Start Single Sidebar Widget -->
+                    <div class="sidebar-single-widget">
+                        <h6 class="sidebar-title">Tìm kiếm</h6>
+                        <div class="default-search-style d-flex">
+                            <input class="default-search-style-input-box" type="search" placeholder="Tìm..." required>
+                            <button class="default-search-style-input-btn" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div> <!-- End Single Sidebar Widget -->
+                    <!-- Start Single Sidebar Widget -->
+                    <div class="sidebar-single-widget">
+                        <h6 class="sidebar-title">DANH MỤC SẢN PHẨM</h6>
+                        <div class="sidebar-content">
+                            <ul class="sidebar-menu">
+                                <li><a href="Trangdiem.html">Trang điểm</a></li>
+                                <li><a href="Trangdiem.html">Trang điểm mắt</a></li>
+                                <li><a href="Trangdiem.html">Trang điểm môi</a></li>
+                                <li><a href="Trangdiem.html">Trang điểm mặt</a></li>
+                                <li><a href="Chamsocda.html">Chăm sóc da</a></li>
+                                <li><a href="Chamsocda.html">Chăm sóc tóc</a></li>
+                                <li><a href="Phukien.html">Phụ kiện</a></li>
+                                <li><a href="Nuochoa.html">Nước hoa</a></li>
+                            </ul>
+                        </div>
+                    </div> <!-- End Single Sidebar Widget -->
+                    <!-- Start Single Sidebar Widget -->
+                    <div class="sidebar-single-widget">
+                        <h6 class="sidebar-title">Loại Sản phẩm review</h6>
+                        <div class="sidebar-content">
+                            <div class="tag-link">
+                                <a href="#">Dưỡng da</a>
+                                <a href="#">Mặt nạ</a>
+                                <a href="#">Son</a>
+                                <a href="#">Dưỡng thể</a>
+                                <a href="#">Phấn trang điểm</a>
+                            </div>
+                        </div>
+                    </div> <!-- End Single Sidebar Widget -->
+                    <!-- Start Single Sidebar Widget -->
+                    <div class="sidebar-single-widget">
+                        <h6 class="sidebar-title">Chương trình khuyến mại</h6>
+                        <div class="sidebar-content">
+                            <div class="tag-link">
+                                <a href="#">Khai trương cửa hàng</a>
+                                <a href="#">Các dịp lễ</a>
+                                <a href="#">Đại sale</a>
+                                <a href="#">Sale cuối năm</a>
+                                <a href="#">Các tháng</a>
+                            </div>
+                        </div>
+                    </div> <!-- End Single Sidebar Widget -->
+                    <div class="sidebar-single-widget">
+                        <h6 class="sidebar-title">Tin nổi bật</h6>
+                        <div class="sidebar-content">
+                            <ul class="sidebar-menu">
+                                <li><a href="#">5 bước trang điểm</a></li>
+                                <li><a href="#">Cách dùng nước hoa</a></li>
+                                <li><a href="#">Cách kẻ mí</a></li>
+                                <li><a href="#">Mỹ phẩm tốt</a></li>
+                            </ul>
+                        </div>
+                    </div> <!-- End Single Sidebar Widget -->
+                    <!-- Start Single Sidebar Widget -->
+                    @*<div class="sidebar-single-widget">
+                        <div class="sidebar-content">
+                            <a href="product-details-default.html" class="sidebar-banner img-hover-zoom">
+                                <img class="img-fluid" src="/Assets/Font/images/anhSP/anhsale.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>*@
+
+                </div> <!-- End Sidebar Area -->
+            </div>
+            <div class="col-lg-9">
+                <div class="blog-wrapper">
+                    <div class="row mb-n6">
+                        <div class="blog-single-wrapper">
+                            <div class="blog-single-img aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
+                                <iframe width="870" height="480" src="https://www.youtube.com/embed/cdPD8BAXfT8" title="Mặt Nạ Innisfree My Real Squeeze Mask Review" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                              
+                            </div>
+                            <ul class="post-meta aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+                                <li>Người đăng : <a href="#" class="author">@Model.User.UserName</a></li>
+                                <li>Thời gian : <a href="#" class="date">@Html.FormatValue(Model.PublicDate, "{0:dd/MM/yyyy}")</a></li>
+                            </ul>
+                            <h4 class="post-title aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">@Model.Title</h4>
+                            <div class="para-content aos-init aos-animate" data-aos="fade-up" data-aos-delay="600" style="text-align:justify">
+                                <p>
+                                    Bỏ qua những dòng mặt nạ đình đám, giá cao ngất ngưởng, hôm nay Beauty Garden sẽ review với các nàng một dòng nạ đang được rất nhiều cô gái yêu thích hiện nay – Đó chính là mặt nạ Innisfree It's Real Squeeze Mask. Mặt nạ miếng dạng giấy với vô số sự chọn lựa khác nhau từ chanh, dâu tây, lô hội, hoa hồng, trà xanh,… đều được trồng và chăm sóc trên hòn đảo Jeju xinh đẹp với quy trình đảm bảo an toàn và thân thiện với mọi loại da.
+                                    Bao bì của Innisfree ở tất cả các sản phẩm đều thật biết chiều lòng phái đẹp. Mọi thiết kế đều vô cùng xinh xắn, minh họa siêu dễ thương, mang cảm giác thiên nhiên tươi mới cho bất kỳ ai sử dụng.
+                                </p>
+                                <div class="blog-single-img aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
+                                    <img class="img-fluid" src="@Model.Image" alt="">
+                                </div>
+                                <blockquote class="blockquote-content">
+
+                                    Sử dụng sản phẩm theo đúng quy trình: tẩy trang – rửa mặt – toner – mask. Không quá khó khăn, chỉ cần lấy ra và ướm lên mặt, tránh vùng mắt và môi. Cuối cùng tháo em ấy xuống sau khoảng 20 phút thư giãn. Cảm nhận đầu tiên là trên mặt còn lưu lại dưỡng chất dính dính, nhờn rít. Vì vậy, cần phải massage thêm và rửa sạch nếu không sẽ dễ bí da.
+                                </blockquote>
+                                <p>
+                                    Cảm nhận tiếp theo là da mướt, láng bóng luôn ý. Nói chúng là sáng, tươi mới hơn hẳn. Nếu những ngày mệt mỏi, căng thẳng và mất ngủ có bọng mắt và quầng thâm thì em ấy giúp cải thiện rõ rệt luôn.
+                                    Một miếng mặt nạ Innisfree chứa thật nhiều điều diệu kỳ phải không nào? Đừng quá suy nghĩ bởi so với giá như vậy cùng những thành phần tuyệt vời như thế thì cũng rất đáng để thử rồi.  Đã giúp bạn chọn được cho mình một mặt nạ giấy Innisfree ưng ý! Đừng quên để lại review của  về mặt nạ giấy Innisfree sau khi sử dụng dưới bài viết này nhé!
+                                </p>
+                                <p>
+                                    Sau đây, Beauty Garden sẽ liệt kê một số loại chiết xuất từ thành phần thiên nhiên, các nàng tha hồ chọn lựa để làm đẹp da mình: <br />
+                                    - Strawberry – dâu tây: giúp làm mềm và mướt da. <br />
+
+                                    - Bamboo – tre: làm dịu cơn khát của da bằng cách cấp nước nhanh chóng vào da, dưỡng ẩm cho da tăng 113%, mang đến cho bạn một làn da mịn màng, tươi sáng.<br />
+
+                                    - Green Tea – trà xanh: có tác dụng phục hồi độ đàn hồi và sự tươi trẻ cho da, chống oxy hóa, bảo vệ da khỏi những tác nhân gây hại từ môi trường bên ngoài.
+                                    <br />
+                                    - Pomegranate – lựu: chứa nhiều dưỡng chất giúp da mềm mại, mượt mà, săn chắc và tăng độ đàn hồi. Ngoài ra, mặt nạ còn chứa chứa chắc năng chống lão hóa hiệu quả.
+                                    <br />
+                                    - Bija – nhục đầu khấu: giúp chăm sóc làn da bị mụn đồng thời làm dịu, những sưng tấy do mụn gây ra.
+                                    <br />
+                                    - Lime – chanh: có khả năng làm trắng và cung cấp độ ẩm một cách hiệu quả, kiểm soát dầu thừa, ngăn ngừa hiện tượng bóng dầu, dễ gây nổi mụn trên da.
+                                </p>
+                            </div>
+                            @*<div class="para-tags aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
+                                <span>Tags: </span>
+                                <ul>
+                                    <li><a href="#">fashion</a></li>
+                                    <li><a href="#">t-shirt</a></li>
+                                    <li><a href="#">white</a></li>
+                                </ul>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Start Pagination -->
+                <div class="page-pagination text-center" data-aos="fade-up" data-aos-delay="0">
+                    <ul>
+                        <li><a class="active" href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#"><i class="ion-ios-skipforward"></i></a></li>
+                    </ul>
+                </div> <!-- End Pagination -->
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,307 @@
+﻿
+@{
+    ViewBag.Title = "CSdoitra";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<header class="header-section d-none d-xl-block">
+    <div class="header-wrapper">
+        <div class="header-bottom header-bottom-color--golden section-fluid sticky-header sticky-color--golden">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 d-flex align-items-center justify-content-between">
+                        <!-- Start Header Logo -->
+                        <div class="header-logo">
+                            <div class="logo">
+                                <a href="/"><img src="/Assets/Font/images/logo/logo_black.png" alt=""></a>
+                            </div>
+                        </div>
+                        <!-- End Header Logo -->
+                        <!-- Start Header Main Menu -->
+                        <div class="main-menu menu-color--black menu-hover-color--green">
+                            <nav>
+                                <ul>
+                                    <li class="has-dropdown">
+                                        <a class="active main-menu-link" href="/">Trang chủ </a>
+                                    </li>
+                                    <li class="has-dropdown has-megaitem">
+                                        <a href="/SanPham/ChitietSP"> Sản phẩm <i class="fa fa-angle-down"></i></a>
+                                        <!-- Mega Menu -->
+                                        <div class="mega-menu">
+                                            <ul class="mega-menu-inner">
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Trangdiem" class="mega-menu-item-title">Trang Điểm</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="shop-grid-sidebar-left.html">Cushion</a></li>
+                                                        <li><a href="shop-grid-sidebar-right.html">Kem nền</a></li>
+                                                        <li><a href="shop-full-width.html">Phấn má hồng</a></li>
+                                                        <li><a href="shop-list-sidebar-left.html">Xịt khoáng</a></li>
+                                                        <li><a href="shop-list-sidebar-right.html">Son Môi</a></li>
+                                                        <li><a href="shop-list-sidebar-left.html">Son dưỡng</a></li>
+                                                        <li><a href="shop-list-sidebar-right.html">Phấn mắt</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Chamsocda" class="mega-menu-item-title">Chăm Sóc Da</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="cart.html">Mask giấy</a></li>
+                                                        <li><a href="empty-cart.html">Mặt nạ</a></li>
+                                                        <li><a href="wishlist.html">Sữa rửa mặt</a></li>
+                                                        <li><a href="compare.html">Dưỡng da mặt</a></li>
+                                                        <li><a href="checkout.html">Tẩy da chết</a></li>
+                                                        <li><a href="login.html">Dưỡng da mắt</a></li>
+                                                        <li><a href="my-account.html">Lotion</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Nuochoa" class="mega-menu-item-title">Nước Hoa</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="ChitietSP.html">Nước hoa nữ</a></li>
+                                                        <li><a href="product-details-variable.html">Nước hoa nam</a></li>
+                                                        <li><a href="product-details-affiliate.html">Xịt body</a></li>
+                                                        <li><a href="product-details-group.html">Sữa tắm</a></li>
+                                                        <li><a href="product-details-single-slide.html">Tẩy lông</a></li>
+                                                        <li><a href="product-details-group.html">Sữa dưỡng thể</a></li>
+                                                        <li><a href="product-details-single-slide.html">Kem dưỡng tay</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Phukien" class="mega-menu-item-title">Phụ Kiện</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="product-details-tab-left.html">Dụng cụ trang điểm</a></li>
+                                                        <li><a href="product-details-tab-right.html">Phụ kiện làm đẹp</a></li>
+                                                        <li><a href="product-details-gallery-left.html">Sơn móng tay</a></li>
+                                                        <li><a href="product-details-gallery-right.html">Rửa móng</a></li>
+                                                        <li><a href="product-details-sticky-left.html">Mút đánh phấn</a></li>
+                                                        <li><a href="product-details-sticky-right.html">Mặt nạ nén</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <div class="menu-banner">
+                                                <a href="#" class="menu-banner-link">
+                                                    <img class="menu-banner-img" src="/Assets/Font/images/banner/banner-blackV.jpg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="/Home/Khuyenmai">Khuyến mãi</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="#">Tin tức<i class="fa fa-angle-down"></i></a>
+                                        <!-- Sub Menu -->
+                                        <ul class="sub-menu">
+                                            <li><a href="/Home/About">Về chúng tôi</a></li>
+                                            <li><a href="/Tintuc/Review">Review sản phẩm</a></li>
+                                            <li><a href="/Tintuc/CSdoitra">Chính sách đổi trả</a></li>
+                                            <li><a href="/Tintuc/Login">Đăng nhập</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">Thương Hiệu <i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="#">3CE</a></li>
+                                            <li><a href="#">3W Clinic</a></li>
+                                            <li><a href="">A'PIEU</a></li>
+                                            <li><a href="">Aritaum</a></li>
+                                            <li><a href="">Avene</a></li>
+                                            <li><a href="">Bath and body works</a></li>
+                                            <li><a href="">Benton</a></li>
+                                            <li><a href="">Biodema</a></li>
+                                            <li><a href="">Careline</a></li>
+                                            <li><a href="">City color</a></li>
+                                            <li><a href="">Covergril</a></li>
+                                            <li><a href="">DHC</a></li>
+                                            <li><a href="">Dr.Belmeur</a></li>
+                                            <li><a href="">Etude House</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/Home/Contact">Liên hệ</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- End Header Main Menu Start -->
+                        <!-- Start Header Action Link -->
+                        <ul class="header-action-link action-color--black action-hover-color--green">
+                            <li>
+                                <a href="#offcanvas-wishlish" class="offcanvas-toggle">
+                                    <i class="icon-heart"></i>
+                                    <span class="item-count">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#offcanvas-add-cart" class="offcanvas-toggle">
+                                    <i class="icon-bag"></i>
+                                    <span class="item-count">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#search">
+                                    <i class="icon-magnifier"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">
+                                    <i class="icon-menu"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- End Header Action Link -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Start Header Area -->
+<!-- Start Mobile Header -->
+<div class="mobile-header mobile-header-bg-color--golden section-fluid d-lg-block d-xl-none">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex align-items-center justify-content-between">
+                <!-- Start Mobile Left Side -->
+                <div class="mobile-header-left">
+                    <ul class="mobile-menu-logo">
+                        <li>
+                            <a href="/">
+                                <div class="logo">
+                                    <img src="/Assets/Font/images/logo/logo_black.png" alt="">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Mobile Left Side -->
+                <!-- Start Mobile Right Side -->
+                <div class="mobile-right-side">
+                    <ul class="header-action-link action-color--black action-hover-color--golden">
+                        <li>
+                            <a href="#search">
+                                <i class="icon-magnifier"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#offcanvas-wishlish" class="offcanvas-toggle">
+                                <i class="icon-heart"></i>
+                                <span class="item-count">3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#offcanvas-add-cart" class="offcanvas-toggle">
+                                <i class="icon-bag"></i>
+                                <span class="item-count">3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#mobile-menu-offcanvas" class="offcanvas-toggle offside-menu">
+                                <i class="icon-menu"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Mobile Right Side -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="breadcrumb-section breadcrumb-bg-color--golden">
+    <div class="breadcrumb-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="breadcrumb-title">Chính sách đổi trả</h3>
+                    <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                        <nav aria-label="breadcrumb">
+                            <ul>
+                                <li><a href="/">Trang chủ</a></li>
+                                <li><a href="#">Tin tức</a></li>
+                                <li class="active" aria-current="page">Chính sách đổi trả</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- ...:::: End Breadcrumb Section:::... -->
+<!-- ...::::Start Privacy Policy  Section:::... -->
+<div class="privacy-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="privacy-policy-wrapper">
+                    <!-- Start Privacy Policy Single Item -->
+                    <div class="privacy-single-item" data-aos="fade-up" data-aos-delay="0">
+                        <h3 class="title">CHÍNH SÁCH ĐỔI TRẢ HÀNG</h3>
+                        <h4 class="sub-title">Bạn hãy đọc kỹ cách trường hợp có thể đổi trả bên HONO, ngoài các trường hợp bên dưới HONO sẽ không hỗ trợ đổi trả được cho khách hàng.</h4>
+                    </div> <!-- Start Privacy Policy Single Item -->
+                    <!-- Start Privacy Policy Single Item -->
+                    <div class="privacy-single-item" data-aos="fade-up" data-aos-delay="0">
+                        <h4 class="sub-title"><span style="color:#008000;">1. Thời gian tiếp nhận yêu cầu đổi / trả</span></h4>
+                        <p>
+                            Sau khi nhận được hàng, Khách hàng có quyền cân nhắc và yêu cầu đổi / trả sản phẩm trong vòng 24h làm việc. HONO có quyền từ chối tiếp nhận mọi yêu cầu đổi / trả từ quý khách được phát sinh sau thời gian trên. Việc xác định thời hạn đổi/ trả căn cứ theo ghi chú của nhân viên trên phiếu giao hàng hoặc dấu bưu điện nếu gửi đi Tỉnh.
+                        </p>
+                    </div> <!-- Start Privacy Policy Single Item -->
+                    <!-- Start Privacy Policy Single Item -->
+                    <div class="privacy-single-item" data-aos="fade-up" data-aos-delay="0">
+                        <h4 class="sub-title"><span style="color:#008000;">2. Thời gian xử lý yêu cầu đổi / trả</span> </h4>
+                        <p>
+                            Sau khi Khách hàng thông báo với HONO về yêu cầu đổi / trả, trong vòng 3 – 5 ngày tiếp theo, Khách hàng vui lòng gửi lại sản phẩm đổi và tiền chênh lệch (nếu có – khi đổi sản phẩm) về HONO .
+                            <br>
+                            Sau thời gian này, nếu chúng tôi vẫn chưa nhận được sản phẩm đổi và tiền chênh lệch (nếu có), yêu cầu đổi / trả của Khách hàng sẽ bị hủy.
+                            HONO sẽ gửi lại cho Khách hàng sản phẩm mới hoặc hoàn tiền do trả sản phẩm trong vòng 2 -3 ngày làm việc kể từ khi nhận được sản phẩm đổi của Khách hàng.
+                        </p>
+                    </div> <!-- Start Privacy Policy Single Item -->
+                    <!-- Start Privacy Policy Single Item -->
+                    <div class="privacy-single-item" data-aos="fade-up" data-aos-delay="0">
+                        <h4 class="sub-title"><span style="color:#008000;">3. Điều kiện đổi/ trả sản phẩm</span></h4>
+                        <p>
+                            - Sản phẩm còn nguyên vẹn như khi ban đầu, còn nguyên tem mác (nếu có), chưa có dấu hiệu bị sử dụng.
+                        </p>
+                        <p>- Sản phẩm không bị dơ bẩn, hư hỏng, trầy xước, có mùi hoặc đã qua sử dụng.</p>
+                        <p>- Sản phẩm thời trang chưa bị sử dụng, chưa qua giặt, tẩy, không có mùi lạ.</p>
+                        <p>- Phải có phiếu giao hàng còn đầy đủ các phụ kiện, tặng phẩm, phiếu bảo hành (nếu có).</p>
+                        <p>- Sản phẩm không thuộc danh mục những mặt hàng không áp dụng đổi / trả.</p>
+                    </div> <!-- Start Privacy Policy Single Item -->
+                    <!-- Start Privacy Policy Single Item -->
+                    <div class="privacy-single-item" data-aos="fade-up" data-aos-delay="0">
+                        <h4 class="sub-title"><span style="color:#008000;">4. Hình thức hoàn tiền</span></h4>
+                        <p>
+                            Hoàn tiền qua tài khoản ngân hàng. Thời gian hoàn tất thủ tục hoàn tiền: từ 5 – 7 ngày làm việc. Tuy nhiên, thủ tục bên phía Ngân hàng có thể mất từ 1 đến 2 ngày để hiển thị số tiền bồi hoàn trong tài khoản của Khách hàng.
+                        </p>
+                        <p>
+                            Riêng đối với các loại thẻ thanh toán quốc tế (Visa, Mastercard,…), tài khoản thẻ của Khách hàng sẽ hiển thị số tiền bồi hoàn ở lần sao kê tiếp theo (thời gian dự kiến là 30 ngày tùy theo ngân hàng).
+                        </p>
+                        <p>
+                            Lưu ý: Hình thức hoàn tiền qua ngân hàng chỉ áp dụng trong trường hợp số tiền hoàn lại có giá trị trên 200.000Đ.
+                        </p>
+                    </div> <!-- Start Privacy Policy Single Item -->
+                    <!-- Start Privacy Policy Single Item -->
+                    <div class="privacy-single-item" data-aos="fade-up" data-aos-delay="0">
+                        <h4 class="sub-title"><span style="color:#008000;">5. Trường hợp đổi / trả hàng theo yêu cầu của Khách hàng (không phải lỗi từ HONO)</span></h4>
+                        <p>
+                            Khách hàng chỉ được đổi 1 lần cho sản phẩm đã mua và chỉ khi HONO còn sản phẩm thay thế. Sản phẩm thay thế phải có giá trị ngang hoặc cao hơn sản phẩm đã mua trước đó.
+                            <br>
+                            Với các yêu cầu đổi size hoặc màu sắc sản phẩm, HONO sẽ hỗ trợ đổi sang sản phẩm cùng kiểu dáng hoặc cùng nhãn hàng.
+                        </p>
+                    </div> <!-- Start Privacy Policy Single Item -->
+                    <!-- Start Privacy Policy Single Item -->
+                    <div class="privacy-single-item" data-aos="fade-up" data-aos-delay="0">
+                        <h4 class="sub-title"><span style="color:#008000;">6. Trường hợp đổi / trả hàng do lỗi từ HONO</span></h4>
+                        <p>
+                            Nhân viên Beautygarden sẽ nhận lại sản phẩm muốn đổi tại địa chỉ của Khách hàng theo thời gian đã hẹn.
+                            <br>
+                            Tại các tỉnh thành khác, Khách hàng gửi sản phẩm về địa chỉ của Beauty Garden tại Thành phố HCM .
+                        </p>
+                    </div> <!-- Start Privacy Policy Single Item -->
+                    <!-- Start Privacy Policy Single Item -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

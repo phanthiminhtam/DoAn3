@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "THÊM NHÂN VIÊN";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div ng-app="staffApp" ng-controller="StaffController">
+    <form ng-submit="Save()">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-4" style="font-size:18px">Tên nhân viên</label>
+                    <div class="col-md-10">
+                        <input class="form-control" placeholder="VD: Nguyễn Văn Anh"  type="text" ng-model="staff.StaffName" required="" />
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-4" style="font-size:18px">Địa chỉ</label>
+                    <div class="col-md-10">
+                        <input class="form-control" placeholder="Xã, Huyện, Tỉnh..." type="text" ng-model="staff.Address" required="" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-4" style="font-size:18px">Số điện thoại</label>
+                    <div class="col-md-10">
+                        <input class="form-control" placeholder="VD: 0909 099 099 (*)" ng-model="staff.PhoneNumber" required="" />
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-4" style="font-size:18px">Email</label>
+                    <div class="col-md-10">
+                        <input class="form-control" placeholder="VD:email@gmail" type="text" ng-model="staff.Email" required="" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-4" style="font-size:18px">Chức vụ</label>
+                    <div class="col-md-10">
+                        <select id="inputState" class="form-control" ng-model="staff.Post">
+                            <option>Choose...</option>
+                            <option>Nhân viên</option>
+                            <option>Quản lý</option>
+                            <option>BOD</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-4" style="font-size:18px">Lương cơ bản</label>
+                    <div class="col-md-10">
+                        <select id="inputState" class="form-control" ng-model="staff.BasicSalary" required="">
+                            <option>Chọn...</option>
+                            <option>5600000</option>
+                            <option>5300000</option>
+                            <option>6500000</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row ">
+                <div class="form-group col-md-6">
+                    <label class="col-sm-4 control-label" style="font-size:18px">Ngày bắt đầu LV</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="date" id="example-date" ng-model="staff.StartDate" required="">
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-4" style="font-size:18px">Hình thức LV</label>
+                    <div class="col-md-10">
+                        <select id="inputState" class="form-control" ng-model="staff.TypeWork" required="">
+                            <option>Chọn...</option>
+                            <option>Full-time</option>
+                            <option>Part-time</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-4" style="font-size:18px" required="">Hợp đồng LĐ</label>
+                    <div class="col-md-10">
+                        <select id="inputState" class="form-control" ng-model="staff.ContractWork">
+                            <option>Chọn...</option>
+                            <option>HĐLĐ vô thời hạn</option>
+                            <option>HĐLĐ 1 năm</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @Html.ActionLink("Huỷ", "Index", null, new { @class = "btn btn-danger", @style = "font-size:15px" })
+                    <button type="submit" class="btn btn-primary" style="font-size:15px"><i class=""></i> Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+@section Script{
+    <script src="/Scripts/angular.min.js"></script>
+    <script src="/Assets/Admin/js/AngularJs/AngularStaff.js"></script>
+
+}

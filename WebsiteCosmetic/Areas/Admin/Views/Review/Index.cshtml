@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Models.Framework.Review>
+
+@{
+    ViewBag.Title = "DANH SÁCH REVIEW";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    int tt = 0;
+}
+
+<table class="table table-striped table-bordered text-center font-17 w-100 nowrap" id="scroll-horizontal-datatable">
+    <thead class="thead-dark">
+        <tr>
+            <th>STT</th>
+            <th class="text-white font-18">
+                Tên đăng nhập
+            </th>
+            <th class="text-white font-18">
+                Email
+            </th>
+            <th class="text-white font-18">
+                Nội dung
+            </th>
+            <th class="text-white font-18">
+                Lượt vote
+            </th>
+            <th class="text-white font-18">
+                Thời gian
+            </th>
+            <th class="text-white font-18">
+                Tình trạng
+            </th>
+            <th class="text-white font-18">Xoá</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(tt++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vote)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <td>
+                    <button type="button" onclick="ChangeStatus(event,@item.ReviewId)" class="btnChanges btn btn-primary waves-effect waves-light">Duyệt</button>
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Delete", new { id = item.ReviewId }, new
+                  {
+                      @class = "remixicon-delete-bin-line",
+                      @style = "font-size:25px",
+                      @Onclick = "return confirm('Bạn có muốn xoá tin tức này không?')"
+                  })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Script{
+    <script src="\Assets\Admin\libs\datatables\jquery.dataTables.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.bootstrap4.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.responsive.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\responsive.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.buttons.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.html5.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.flash.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.print.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.keyTable.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.select.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\pdfmake.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\vfs_fonts.js"></script>
+    <!-- third party js ends -->
+    <!-- Datatables init -->
+    <script src="\Assets\Admin\js\pages\datatables.init.js"></script>
+    <script>
+        function ChangeStatus(e,id) {
+            $.ajax({
+                url: '/Review/ChangeStatus/' + id,
+                type: "Get",
+                dataType: 'Json',
+                success: function (res) {
+                    if (res.check) {
+                        if (res.statusReview) {
+                            $(e.target).css({
+                                "background-color": "#6c757d",
+                                "border-color": "#6c757d"
+                            });
+                        }
+                        else {
+                            $(e.target).css({
+                                "background-color": "#1abc9c",
+                                "border-color": "#1abc9c"
+                            });
+                        }
+                       
+                    }
+                    else {
+                        alert("Không cập nhật được!");
+                    }
+                }
+            });
+        }
+    </script>
+}
+

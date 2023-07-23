@@ -1,0 +1,736 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+}
+@model List<Models.Framework.SpecificProduct>
+<header class="header-section d-none d-xl-block">
+    <div class="header-wrapper">
+        <!-- Start Header Top -->
+        <div class="header-top header-top-bg--black section-fluid">
+            <div class="container">
+                <div class="col-12 d-flex align-items-center justify-content-between">
+                    <div class="header-top-left">
+                        <div class="header-top-contact header-top-contact-color--white header-top-contact-hover-color--green">
+                            <a href="tel:(+800)345678" class="icon-space-right"><i class="icon-call-in"></i>(+800) 345 678</a>
+                            <a href="mailto:support@plazathemes.com" class="icon-space-right"><i class="icon-envelope"></i>Support@plazathemes.com</a>
+                        </div>
+                    </div>
+                    <div class="header-top-right">
+                        <div class="header-top-user-link header-top-user-link-color--white header-top-user-link-hover-color--green">
+
+                            @{
+                                var session = (WebsiteCosmetic.Common.UserLogin)Session[WebsiteCosmetic.Common.CommonConstants.USER_SESSION];
+                            }
+                            @if (Session[WebsiteCosmetic.Common.CommonConstants.USER_SESSION] != null)
+                            {
+                                <a></a>
+                                <a href="#">Xin chào: @session.UserName</a>
+                                <a href="#">@Html.ActionLink("Đăng xuất", "Logout", "TinTuc")</a>
+                                <a></a>
+                            }
+                            else
+                            {
+                                <a href="/GioHang/Wishlist">Yêu thích</a>
+                                <a href="/GioHang/Cart">Giỏ hàng</a>
+                                <a href="/GioHang/Checkout">Thanh toán</a>
+                                <a href="/TinTuc/Login">Tài khoản</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Header Top -->
+        <!-- Start Header Bottom -->
+        <div class="header-bottom header-bottom-color--green section-fluid sticky-header sticky-color--white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 d-flex align-items-center justify-content-between">
+                        <!-- Start Header Logo -->
+                        <div class="header-logo">
+                            <div class="logo">
+                                <a href="/"><img src="/Assets/Font/images/logo/logo_black.png" alt=""></a>
+                            </div>
+                        </div>
+                        <!-- End Header Logo -->
+                        <!-- Start Header Main Menu -->
+                        <div class="main-menu menu-color--black menu-hover-color--green">
+                            <nav>
+                                <ul>
+                                    <li class="has-dropdown">
+                                        <a class="active main-menu-link" href="/">Trang chủ </a>
+                                    </li>
+                                    <li class="has-dropdown has-megaitem">
+                                        <a href="/SanPham/ChitietSP/"> Sản phẩm <i class="fa fa-angle-down"></i></a>
+                                        <!-- Mega Menu -->
+                                        @Html.Action("MenuSanPham")
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="/Home/Khuyenmai">Khuyến mãi</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="#">Tin tức<i class="fa fa-angle-down"></i></a>
+                                        <!-- Sub Menu -->
+                                        <ul class="sub-menu">
+                                            <li><a href="/Home/About">Về chúng tôi</a></li>
+                                            <li><a href="/Tintuc/Review">Review sản phẩm</a></li>
+                                            <li><a href="/Tintuc/CSdoitra">Chính sách đổi trả</a></li>
+                                            <li><a href="/Tintuc/Login">Đăng nhập</a></li>
+                                            <li><a href="/Tintuc/Register">Đăng ký</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">Thương Hiệu <i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="#">3CE</a></li>
+                                            <li><a href="#">3W Clinic</a></li>
+                                            <li><a href="">A'PIEU</a></li>
+                                            <li><a href="">Aritaum</a></li>
+                                            <li><a href="">Avene</a></li>
+                                            <li><a href="">Bath and body works</a></li>
+                                            <li><a href="">Benton</a></li>
+                                            <li><a href="">Biodema</a></li>
+                                            <li><a href="">Careline</a></li>
+                                            <li><a href="">City color</a></li>
+                                            <li><a href="">Covergril</a></li>
+                                            <li><a href="">DHC</a></li>
+                                            <li><a href="">Dr.Belmeur</a></li>
+                                            <li><a href="">Etude House</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/Home/Contact">Liên hệ</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- End Header Main Menu Start -->
+                        <!-- Start Header Action Link -->
+                        <ul class="header-action-link action-color--black action-hover-color--green">
+
+                            @{Html.RenderAction("CartLike", "Home");}
+                            @{Html.RenderAction("HeaderCart", "Home");}
+                            @*<li>
+                                <a href="#offcanvas-add-cart" class="offcanvas-toggle minicartLink">
+                                    <i class="icon-bag"></i>
+                                    <span class="item-count quantity-minicart">0</span>
+                                </a>
+                            </li>*@
+
+                            <li>
+                                <a href="#search">
+                                    <i class="icon-magnifier"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- End Header Action Link -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Header Bottom -->
+    </div>
+</header>
+<div class="mobile-header mobile-header-bg-color--white section-fluid d-lg-block d-xl-none">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex align-items-center justify-content-between">
+                <!-- Start Mobile Left Side -->
+                <div class="mobile-header-left">
+                    <ul class="mobile-menu-logo">
+                        <li>
+                            <a href="/">
+                                <div class="logo">
+                                    <img src="/Assets/Font/images/logo/logo_black.png" alt="">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Mobile Left Side -->
+                <!-- Start Mobile Right Side -->
+                <div class="mobile-right-side">
+                    <ul class="header-action-link action-color--black action-hover-color--green">
+                        <li>
+                            <a href="#search">
+                                <i class="icon-magnifier"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#offcanvas-wishlish" class="offcanvas-toggle">
+                                <i class="icon-heart"></i>
+                                <span class="item-count ">3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#offcanvas-add-cart" class="offcanvas-toggle minicartLink" >
+                                <i class="icon-bag"></i>
+                
+                                <span class="item-count  quantity-minicart">0</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#mobile-menu-offcanvas" class="offcanvas-toggle offside-menu">
+                                <i class="icon-menu"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Mobile Right Side -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hero-slider-section">
+    <!-- Slider main container -->
+    <div class="hero-slider-active swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Start Hero Single Slider Item -->
+            <div class="hero-single-slider-item swiper-slide">
+                <!-- Hero Slider Image -->
+                <div class="hero-slider-bg">
+                    <img src="/Assets/Font/images/hero-slider/home-2/hero-slider-1.jpg" alt="">
+                </div>
+                <!-- Hero Slider Content -->
+                <div class="hero-slider-wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="hero-slider-content">
+                                    <h4 class="subtitle">Made of Fresh Ingredients</h4>
+                                    <h1 class="title">A natural & <br> organic Skincare </h1>
+                                    <a href="ChitietSP.html" class="btn btn-lg btn-outline-green">shop now </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End Hero Single Slider Item -->
+            <!-- Start Hero Single Slider Item -->
+            <div class="hero-single-slider-item swiper-slide">
+                <!-- Hero Slider Image -->
+                <div class="hero-slider-bg">
+                    <img src="/Assets/Font/images/hero-slider/home-2/hero-slider-2.jpg" alt="">
+                </div>
+                <!-- Hero Slider Content -->
+                <div class="hero-slider-wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="hero-slider-content">
+                                    <h4 class="subtitle">Premium Facial Skincare</h4>
+                                    <h1 class="title">Fresh Face <br> Natural Skincare</h1>
+                                    <a href="ChitietSP.html" class="btn btn-lg btn-outline-green">shop now </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End Hero Single Slider Item -->
+            <div class="hero-single-slider-item swiper-slide">
+                <!-- Hero Slider Image -->
+                <div class="hero-slider-bg">
+                    <img src="/Assets/Font/images/anhSP/thiết-kế-banner-mỹ-phẩm-5.png" alt="">
+                </div>
+                <!-- Hero Slider Content -->
+                <div class="hero-slider-wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="hero-slider-content">
+                                    <h4 class="subtitle">Premium Facial Skincare</h4>
+                                    <h1 class="title">Fresh Face <br> Natural Skincare</h1>
+                                    <a href="ChitietSP.html" class="btn btn-lg btn-outline-green">shop now </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End Hero Single Slider Item -->
+            <div class="hero-single-slider-item swiper-slide">
+                <!-- Hero Slider Image -->
+                <div class="hero-slider-bg">
+                    <img src="/Assets/Font/images/hero-slider/home-2/header4.jpg" alt="">
+                </div>
+                <!-- Hero Slider Content -->
+                <div class="hero-slider-wrapper">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="hero-slider-content">
+                                    <h4 class="subtitle">Premium Facial Skincare</h4>
+                                    <h1 class="title">Fresh Face <br> Natural Skincare</h1>
+                                    <a href="ChitietSP.html" class="btn btn-lg btn-outline-green">shop now </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End Hero Single Slider Item -->
+        </div>
+
+        <!-- If we need pagination -->
+        <div class="swiper-pagination active-color-green"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev d-none d-lg-block"></div>
+        <div class="swiper-button-next d-none d-lg-block"></div>
+    </div>
+</div>
+<!-- End Company Logo Section -->
+<!-- Start Banner Section -->
+<div class="banner-section section-top-gap-100 section-fluid">
+    <div class="banner-wrapper">
+        <div class="container">
+            <div class="row mb-n6">
+                <div class="col-md-4 col-12 mb-6">
+                    <!-- Start Banner Single Item -->
+                    <div class="banner-single-item banner-style-5 img-responsive" data-aos="fade-up" data-aos-delay="0">
+                        <a href="ChitietSP.html" class="image banner-animation">
+                            <img src="/Assets/Font/images/banner/banner-style-5-img-1.jpg" alt="">
+                        </a>
+                    </div>
+                    <!-- End Banner Single Item -->
+                </div>
+                <div class="col-md-4 col-12 mb-6">
+                    <!-- Start Banner Single Item -->
+                    <div class="banner-single-item banner-style-5 img-responsive" data-aos="fade-up" data-aos-delay="200">
+                        <a href="ChitietSP.html" class="image banner-animation">
+                            <img src="/Assets/Font/images/banner/banner-style-5-img-2.jpg" alt="">
+                        </a>
+                    </div>
+                    <!-- End Banner Single Item -->
+                </div>
+                <div class="col-md-4 col-12 mb-6">
+                    <!-- Start Banner Single Item -->
+                    <div class="banner-single-item banner-style-5 img-responsive" data-aos="fade-up" data-aos-delay="400">
+                        <a href="ChitietSP.html" class="image banner-animation">
+                            <img src="/Assets/Font/images/banner/banner-style-5-img-3.jpg" alt="">
+                        </a>
+                    </div>
+                    <!-- End Banner Single Item -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Banner Section -->
+<!-- Start Product Default Slider Section -->
+<div class="product-default-slider-section section-top-gap-100 section-fluid">
+    <!-- Start Section Content Text Area -->
+    <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-content-gap">
+                        <div class="secton-content">
+                            <h3 class="section-title">sản phẩm mới về</h3>
+                            <p>Đặt hàng ngay để được nhận giảm giá và quà tặng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Start Section Content Text Area -->
+    <div class="product-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-slider-default-1row default-slider-nav-arrow">
+                        <!-- Slider main container -->
+                        <div class="swiper-container product-default-slider-4grid-1row">
+                            @Html.Action("SPMoive")                     
+                        </div>
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Product Default Slider Section -->
+<div class="product-default-slider-section section-top-gap-100 section-fluid">
+    <!-- Start Section Content Text Area -->
+    <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-content-gap">
+                        <div class="secton-content">
+                            <h3 class="section-title">sản phẩm khuyến mại</h3>
+                            <p>Đặt hàng ngay để được nhận giảm giá và quà tặng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Start Section Content Text Area -->
+    <div class="product-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-slider-default-1row default-slider-nav-arrow">
+                        <!-- Slider main container -->
+                        <div class="swiper-container product-default-slider-4grid-1row">
+                            <!-- Additional required wrapper -->
+                            @Html.Action("SPKhuyenMai")
+                        </div>
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Start Banner Section -->
+<div class="banner-section section-top-gap-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <!-- Start Banner Single Item -->
+                <div class="banner-single-item banner-style-6 banner-animation img-responsive" data-aos="fade-up" data-aos-delay="0">
+                    <div class="image">
+                        <img src="/Assets/Font/images/banner/banner-style-6-img-1.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <h6 class="sub-title">TRÀ XANH HOA NHÀI</h6>
+                        <h2 class="title">
+                            Sản phẩm tự nhiên
+                            Bộ sưu tập cơ bản
+                        </h2>
+                        <p>Với sứ mệnh tạo ra sản phẩm chăm sóc da hoàn toàn tự nhiên mang lại kết quả rõ rệt, Herbivore đảm bảo mọi thành phần trong công thức của họ đều có mục đích cụ thể, mang lại hiệu quả cao..</p>
+                        @*<a href="ChitietSP.html" class="btn btn-lg btn-outline-green icon-space-left"><span class="d-flex align-items-center">Browse <i class="ion-ios-arrow-thin-right"></i></span></a>*@
+                    </div>
+                </div>
+                <!-- End Banner Single Item -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Banner Section -->
+<!-- Start Service Section -->
+<div class="service-promo-section section-top-gap-100">
+    <div class="service-wrapper">
+        <div class="container">
+            <div class="row">
+                <!-- Start Service Promo Single Item -->
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="service-promo-single-item" data-aos="fade-up" data-aos-delay="0">
+                        <div class="image">
+                            <img src="/Assets/Font/images/icons/service-promo-5.png" alt="">
+                        </div>
+                        <div class="content">
+                            <h6 class="title">FREE SHIPPING</h6>
+                            <p>Nhận lại 10% tiền mặt, giao hàng miễn phí, trả lại miễn phí và hơn thế nữa tại hơn 1000 nhà bán lẻ hàng đầu!</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Service Promo Single Item -->
+                <!-- Start Service Promo Single Item -->
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="service-promo-single-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="image">
+                            <img src="/Assets/Font/images/icons/service-promo-6.png" alt="">
+                        </div>
+                        <div class="content">
+                            <h6 class="title">30 NGÀY HOÀN TIỀN</h6>
+                            <p>Đảm bảo hài lòng 100% hoặc nhận lại tiền của bạn trong vòng 30 ngày!</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Service Promo Single Item -->
+                <!-- Start Service Promo Single Item -->
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="service-promo-single-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="image">
+                            <img src="/Assets/Font/images/icons/service-promo-7.png" alt="">
+                        </div>
+                        <div class="content">
+                            <h6 class="title">THANH TOÁN AN TOÀN</h6>
+                            <p>Thanh toán bằng các phương thức thanh toán an toàn và phổ biến nhất thế giới.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Service Promo Single Item -->
+                <!-- Start Service Promo Single Item -->
+                <div class="col-lg-3 col-sm-6 col-12">
+                    <div class="service-promo-single-item" data-aos="fade-up" data-aos-delay="600">
+                        <div class="image">
+                            <img src="/Assets/Font/images/icons/service-promo-8.png" alt="">
+                        </div>
+                        <div class="content">
+                            <h6 class="title">KHÁCH HÀNG THÂN THIẾT</h6>
+                            <p>Thẻ cho 30% giao dịch mua còn lại của họ với tỷ lệ hoàn tiền 1%.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Service Promo Single Item -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Service Section -->
+<!-- Start Banner Section -->
+<div class="banner-section section-top-gap-100">
+    <div class="banner-wrapper clearfix">
+        <!-- Start Banner Single Item -->
+        <div class="banner-single-item banner-style-4 banner-animation banner-color--green float-left" data-aos="fade-up" data-aos-delay="0">
+            <div class="image">
+                <img class="img-fluid" src="/Assets/Font/images/banner/banner-style-4-img-5.jpg" alt="">
+            </div>
+            <a href="/SanPham/Trangdiem" class="content">
+                <div class="inner">
+                    <h4 class="title">Trang điểm</h4>
+                    @*<h6 class="sub-title">20 products</h6>*@
+                </div>
+                
+                <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
+            </a>
+        </div>
+        <!-- End Banner Single Item -->
+        <!-- Start Banner Single Item -->
+        <div class="banner-single-item banner-style-4 banner-animation banner-color--green float-left" data-aos="fade-up" data-aos-delay="200">
+            <div class="image">
+                <img class="img-fluid" src="/Assets/Font/images/banner/banner-style-4-img-6.jpg" alt="">
+            </div>
+            <a href="/SanPham/Chamsocda" class="content">
+                <div class="inner">
+                    <h4 class="title">Chăm sóc da</h4>
+            
+                </div>
+                <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
+            </a>
+        </div>
+        <!-- End Banner Single Item -->
+        <!-- Start Banner Single Item -->
+        <div class="banner-single-item banner-style-4 banner-animation banner-color--green float-left" data-aos="fade-up" data-aos-delay="400">
+            <div class="image">
+                <img class="img-fluid" src="/Assets/Font/images/banner/banner-style-4-img-7.jpg" alt="">
+            </div>
+            <a href="/SanPham/Chamsocda" class="content">
+                <div class="inner">
+                    <h4 class="title">Sữa rửa mặt</h4>
+                    @*<h6 class="sub-title">20 products</h6>*@
+                </div>
+                <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
+            </a>
+        </div>
+        <!-- End Banner Single Item -->
+        <!-- Start Banner Single Item -->
+        <div class="banner-single-item banner-style-4 banner-animation banner-color--green float-left" data-aos="fade-up" data-aos-delay="600">
+            <div class="image">
+                <img class="img-fluid" src="/Assets/Font/images/banner/banner-style-4-img-8.jpg" alt="">
+            </div>
+            <a href="/SanPham/Phukien" class="content">
+                <div class="inner">
+                    <h4  class="title">Son môi</h4>
+                    @*<h6>20 products</h6>*@
+                </div>
+                <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
+            </a>
+        </div>
+        <!-- End Banner Single Item -->
+    </div>
+</div>
+<!-- End Banner Section -->
+<!-- Start Product List View Slider Section -->
+<div class="product-list-slider-section section-top-gap-100 section-fluid">
+    <!-- Start Section Content Text Area -->
+    <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-content-gap">
+                        <div class="secton-content">
+                            <h3 class="section-title">Sản phẩm bán chạy</h3>
+                            <p>Hãy thêm các sản phẩm tốt nhất vào giỏ hàng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Start Section Content Text Area -->
+    <div class="product-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-list-slider-3rows default-slider-nav-arrow">
+                        <!-- Slider main container -->
+                        <div class="swiper-container product-listview-slider-4grid-3rows">
+                            <!-- Additional required wrapper -->
+                            @Html.Action("SPBanChay")
+                        </div>
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev d-none d-md-block"></div>
+                        <div class="swiper-button-next d-none d-md-block"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Product List View Slider Section -->
+<!-- Start Banner Section -->
+<div class="banner-section section-top-gap-100">
+    <div class="banner-wrapper clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Start Banner Single Item -->
+                    <div class="banner-single-item banner-style-13 banner-color--green" data-aos="fade-up" data-aos-delay="0">
+                        <div class="image">
+                            <img src="/Assets/Font/images/banner/banner-style-13-img-1.jpg" alt="">
+                            <div class="content">
+                                <div class="text">
+                                    <h5 class="sub-title">GIẢM GIÁ 15% KHI MUA LẦN ĐẦU TIÊN CỦA BẠN</h5>
+                                    <h2 class="title">CHĂM SÓC DA HỮU CƠ HONO</h2>
+
+                                    <a href="ChitietSP.html" class="btn btn-lg btn-green icon-space-left"><span class="d-flex align-items-center">Shopping</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- End Banner Single Item -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Banner Section -->
+<!-- Start Blog Slider Section -->
+<div class="blog-default-slider-section section-top-gap-100 section-fluid">
+    <!-- Start Section Content Text Area -->
+    <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-content-gap">
+                        <div class="secton-content">
+                            <h3 class="section-title">Thông tin nổi bật</h3>
+                            <p>Những bài viết rất thú vị và ý nghĩa về cửa hàng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Start Section Content Text Area -->
+    <div class="blog-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="blog-default-slider default-slider-nav-arrow">
+                        <!-- Slider main container -->
+                        <div class="swiper-container blog-slider">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Start Product Default Single Item -->
+                                @Html.Action("TTNoiBat")
+                                <!-- End Product Default Single Item -->
+                                <!-- Start Product Default Single Item -->
+                               
+                            </div>
+                        </div>
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalAddcart" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="button" class="close modal-close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"> <i class="fa fa-times"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="modal-add-cart-product-img">
+                                            <img class="img-fluid" src="@item.Image" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="modal-add-cart-info"><i class="fa fa-check-square"></i>Thêm vào giỏ hàng thành công</div>
+                                        <div class="modal-add-cart-product-cart-buttons">
+                                            <a href="/GioHang/Cart">View Cart</a>
+                                            <a href="/GioHang/Checkout">Checkout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 modal-border">
+                                <ul class="modal-add-cart-product-shipping-info">
+                                    <li> <strong><i class="icon-shopping-cart"></i>Sản phẩm sẽ được đưa vào giỏ hàng</strong></li>
+                                    <li> <strong>Giá: </strong> <span class="fx">@item.Price<sup>₫</sup></span></li>
+                                    <li class="modal-continue-button"><a href="/" data-bs-dismiss="modal">Tiếp tục mua sắm</a></li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="offcanvas-add-cart" class="offcanvas offcanvas-rightside offcanvas-add-cart-section">
+    <!-- Start Offcanvas Header -->
+    <div class="offcanvas-header text-right">
+        <button class="offcanvas-close"><i class="ion-android-close"></i></button>
+    </div> <!-- End Offcanvas Header -->
+    <!-- Start  Offcanvas Addcart Wrapper -->
+    <div class="offcanvas-add-cart-wrapper">
+        <h4 class="offcanvas-title">Giỏ hàng</h4>
+        @{Html.RenderAction("CartMini", "Home");}
+
+        <ul class="offcanvas-cart-action-button">
+            <li><a href="/GioHang/cart" class="btn btn-block btn-green">View Cart</a></li>
+            <li><a href="/GioHang/Checkout" class=" btn btn-block btn-green mt-5">Checkout</a></li>
+        </ul>
+    </div> <!-- End  Offcanvas Addcart Wrapper -->
+
+</div>
+<div id="offcanvas-wishlish" class="offcanvas offcanvas-rightside offcanvas-add-cart-section">
+    <!-- Start Offcanvas Header -->
+    <div class="offcanvas-header text-right">
+        <button class="offcanvas-close"><i class="ion-android-close"></i></button>
+    </div> <!-- ENd Offcanvas Header -->
+    <!-- Start Offcanvas Mobile Menu Wrapper -->
+    <div class="offcanvas-wishlist-wrapper">
+        <h4 class="offcanvas-title">Yêu thích</h4>
+        @{Html.RenderAction("CartWishlist", "Home");}
+        <ul class="offcanvas-wishlist-action-button">
+            <li><a href="/GioHang/Wishlist" class="btn btn-block btn-green">View wishlist</a></li>
+        </ul>
+    </div> <!-- End Offcanvas Mobile Menu Wrapper -->
+
+</div>
+@section Script{
+    @*<script>
+        $('#btnAdd').off('click').on('click', function () {
+            $('#modalAddcart').modal('show');
+        })
+    </script>*@
+    
+}

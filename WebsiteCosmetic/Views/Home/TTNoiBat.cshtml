@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Models.Framework.News>
+@foreach (var i in Model)
+{
+    <div class="blog-default-single-item blog-color--green swiper-slide">
+        <div class="image-box">
+            <a href="blog-single-sidebar-left.html" class="image-link">
+                <img class="img-fluid" style="height: 270px;" src="@i.Image" alt="">
+            </a>
+        </div>
+        <div class="content">
+            <h6 class="title"><a href="/TinTuc/ChitietBV/@i.NewId">@i.Title</a></h6>
+            <p >@Html.Raw(i.Content)</p>
+            <div class="inner">
+                <a href="/TinTuc/ChitietBV/@i.NewId" class="read-more-btn icon-space-left">Đọc thêm  <span><i class="ion-ios-arrow-thin-right"></i></span></a>
+            </div>
+        </div>
+    </div>
+}    

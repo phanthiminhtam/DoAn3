@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Models.Framework.ImportBillDetail>
+@{
+    ViewBag.Title = "CHI TIẾT HOÁ ĐƠN NHẬP";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    int tt = 1;
+}
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary " })
+</p>
+<table class="table table-striped table-bordered text-center font-17 w-100 nowrap" id="scroll-horizontal-datatable">
+    <thead class="thead-dark">
+        <tr>
+            <th class="text-white font-18">
+                STT
+            </th>
+            <th class="text-white font-18">
+                Tên mỹ phẩm
+                @Html.DisplayNameFor(model => model.SpecificProduct.Product.ProName)
+            </th>
+            <th class="text-white font-18">
+
+                @Html.DisplayNameFor(model => model.ImportBill.ImpId)
+            </th>
+            <th class="text-white font-18">
+                @Html.DisplayNameFor(model => model.ExpiredDate)
+            </th>
+            <th class="text-white font-18">
+                @Html.DisplayNameFor(model => model.ImportPrice)
+            </th>
+            <th class="text-white font-18">
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th class="text-white font-18">
+                @Html.DisplayNameFor(model => model.MoneyTotal)
+            </th>
+            <th class="text-white font-18">Sửa/Xoá</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@(tt++)</th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MoneyTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImportBill.Staff.StaffName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SpecificProduct.Product.ProName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpiredDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImportPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.SpId }, new { @class = "remixicon-edit-box-fill", @style = "font-size:25px" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.SpId }, new
+                   {
+                       @class = "remixicon-delete-bin-line",
+                       @style = "font-size:25px",
+                       @Onclick = "return confirm('Bạn có muốn xoá chi tiết đơn hàng này không?')"
+                   })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Script{
+    <script src="\Assets\Admin\libs\datatables\jquery.dataTables.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.bootstrap4.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.responsive.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\responsive.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.buttons.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.html5.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.flash.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.print.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.keyTable.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.select.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\pdfmake.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\vfs_fonts.js"></script>
+    <!-- third party js ends -->
+    <!-- Datatables init -->
+    <script src="\Assets\Admin\js\pages\datatables.init.js"></script>
+}

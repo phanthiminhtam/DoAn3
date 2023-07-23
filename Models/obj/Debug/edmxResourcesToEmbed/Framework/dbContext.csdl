@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebCosmeticModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="CartId" />
+    </Key>
+    <Property Name="CartId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CusId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Cart_Customer" FromRole="Cart" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CatId" />
+    </Key>
+    <Property Name="CatId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CosmeticLines" Relationship="Self.FK_CosmeticLine_Category" FromRole="Category" ToRole="CosmeticLine" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ContactId" />
+    </Key>
+    <Property Name="ContactId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CosmeticLine">
+    <Key>
+      <PropertyRef Name="LineId" />
+    </Key>
+    <Property Name="LineId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CatId" Type="Int64" Nullable="false" />
+    <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Origin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_CosmeticLine_Category" FromRole="CosmeticLine" ToRole="Category" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_CosmeticLine" FromRole="CosmeticLine" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Credential">
+    <Key>
+      <PropertyRef Name="UserGroupID" />
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="UserGroupID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CusId" />
+    </Key>
+    <Property Name="CusId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PassWord" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="Carts" Relationship="Self.FK_Cart_Customer" FromRole="Customer" ToRole="Cart" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+    <NavigationProperty Name="Reviews" Relationship="WebCosmeticModel.FK_Review_Customer" FromRole="Customer" ToRole="Review" />
+  </EntityType>
+  <EntityType Name="ImportBill">
+    <Key>
+      <PropertyRef Name="ImpId" />
+    </Key>
+    <Property Name="ImpId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImpDate" Type="DateTime" Precision="3" />
+    <Property Name="PrvId" Type="Int64" Nullable="false" />
+    <Property Name="StaffId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Provider" Relationship="Self.FK_ImportBill_Provider" FromRole="ImportBill" ToRole="Provider" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK_ImportBill_Staff" FromRole="ImportBill" ToRole="Staff" />
+    <NavigationProperty Name="ImportBillDetails" Relationship="Self.FK_ImportBillDetail_ImportBill" FromRole="ImportBill" ToRole="ImportBillDetail" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="NewId" />
+    </Key>
+    <Property Name="NewId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="Int64" />
+    <Property Name="PublicDate" Type="DateTime" Precision="3" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK_News_User" FromRole="News" ToRole="User" />
+  </EntityType>
+  <EntityType Name="OderDetail">
+    <Key>
+      <PropertyRef Name="OrdId" />
+      <PropertyRef Name="SpId" />
+    </Key>
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="OrdId" Type="Int64" Nullable="false" />
+    <Property Name="SpId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_OderDetail_Order" FromRole="OderDetail" ToRole="Order" />
+    <NavigationProperty Name="SpecificProduct" Relationship="Self.FK_OderDetail_SpecificProduct" FromRole="OderDetail" ToRole="SpecificProduct" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrdId" />
+    </Key>
+    <Property Name="OrdId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CusId" Type="Int64" />
+    <Property Name="ReceivingAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MoneyTotal" Type="Double" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="OderDetails" Relationship="Self.FK_OderDetail_Order" FromRole="Order" ToRole="OderDetail" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProId" />
+    </Key>
+    <Property Name="ProId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProName" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LineId" Type="Int64" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CosmeticLine" Relationship="Self.FK_Product_CosmeticLine" FromRole="Product" ToRole="CosmeticLine" />
+    <NavigationProperty Name="SpecificProducts" Relationship="Self.FK_SpecificProduct_Product" FromRole="Product" ToRole="SpecificProduct" />
+  </EntityType>
+  <EntityType Name="Provider">
+    <Key>
+      <PropertyRef Name="PrvId" />
+    </Key>
+    <Property Name="PrvId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PrvName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ImportBills" Relationship="Self.FK_ImportBill_Provider" FromRole="Provider" ToRole="ImportBill" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SpecificProduct">
+    <Key>
+      <PropertyRef Name="SpId" />
+    </Key>
+    <Property Name="ProId" Type="Int64" Nullable="false" />
+    <Property Name="SpId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Measure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="StartedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="StopDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Offer" Type="Double" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OderDetails" Relationship="Self.FK_OderDetail_SpecificProduct" FromRole="SpecificProduct" ToRole="OderDetail" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_SpecificProduct_Product" FromRole="SpecificProduct" ToRole="Product" />
+    <NavigationProperty Name="ImportBillDetails" Relationship="WebCosmeticModel.FK_ImportBillDetail_SpecificProduct" FromRole="SpecificProduct" ToRole="ImportBillDetail" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="StaffId" />
+    </Key>
+    <Property Name="StaffId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StaffName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BasicSalary" Type="Double" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TypeWork" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContractWork" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ImportBills" Relationship="Self.FK_ImportBill_Staff" FromRole="Staff" ToRole="ImportBill" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="News" Relationship="Self.FK_News_User" FromRole="User" ToRole="News" />
+  </EntityType>
+  <EntityType Name="UserGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ImportBillDetail">
+    <Key>
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="ImportPrice" />
+      <PropertyRef Name="ExpiredDate" />
+      <PropertyRef Name="SpId" />
+    </Key>
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="ImportPrice" Type="Double" Nullable="false" />
+    <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ImpId" Type="Int64" />
+    <Property Name="SpId" Type="Int64" Nullable="false" />
+    <Property Name="MoneyTotal" Type="Double" />
+    <NavigationProperty Name="ImportBill" Relationship="Self.FK_ImportBillDetail_ImportBill" FromRole="ImportBillDetail" ToRole="ImportBill" />
+    <NavigationProperty Name="SpecificProduct" Relationship="WebCosmeticModel.FK_ImportBillDetail_SpecificProduct" FromRole="ImportBillDetail" ToRole="SpecificProduct" />
+  </EntityType>
+  <Association Name="FK_Cart_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CusId" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="CusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CosmeticLine_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="CosmeticLine" Type="Self.CosmeticLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CatId" />
+      </Principal>
+      <Dependent Role="CosmeticLine">
+        <PropertyRef Name="CatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_CosmeticLine">
+    <End Role="CosmeticLine" Type="Self.CosmeticLine" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CosmeticLine">
+        <PropertyRef Name="LineId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="LineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CusId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImportBill_Provider">
+    <End Role="Provider" Type="Self.Provider" Multiplicity="1" />
+    <End Role="ImportBill" Type="Self.ImportBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provider">
+        <PropertyRef Name="PrvId" />
+      </Principal>
+      <Dependent Role="ImportBill">
+        <PropertyRef Name="PrvId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImportBill_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="ImportBill" Type="Self.ImportBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="StaffId" />
+      </Principal>
+      <Dependent Role="ImportBill">
+        <PropertyRef Name="StaffId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImportBillDetail_ImportBill">
+    <End Role="ImportBill" Type="Self.ImportBill" Multiplicity="0..1" />
+    <End Role="ImportBillDetail" Type="Self.ImportBillDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImportBill">
+        <PropertyRef Name="ImpId" />
+      </Principal>
+      <Dependent Role="ImportBillDetail">
+        <PropertyRef Name="ImpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_News_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OderDetail_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OderDetail" Type="Self.OderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrdId" />
+      </Principal>
+      <Dependent Role="OderDetail">
+        <PropertyRef Name="OrdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OderDetail_SpecificProduct">
+    <End Role="SpecificProduct" Type="Self.SpecificProduct" Multiplicity="1" />
+    <End Role="OderDetail" Type="Self.OderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpecificProduct">
+        <PropertyRef Name="SpId" />
+      </Principal>
+      <Dependent Role="OderDetail">
+        <PropertyRef Name="SpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SpecificProduct_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="SpecificProduct" Type="Self.SpecificProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProId" />
+      </Principal>
+      <Dependent Role="SpecificProduct">
+        <PropertyRef Name="ProId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebCosmeticEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Carts" EntityType="Self.Cart" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Contacts" EntityType="Self.Contact" />
+    <EntitySet Name="CosmeticLines" EntityType="Self.CosmeticLine" />
+    <EntitySet Name="Credentials" EntityType="Self.Credential" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="ImportBills" EntityType="Self.ImportBill" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="OderDetails" EntityType="Self.OderDetail" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Providers" EntityType="Self.Provider" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="SpecificProducts" EntityType="Self.SpecificProduct" />
+    <EntitySet Name="Staffs" EntityType="Self.Staff" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserGroups" EntityType="Self.UserGroup" />
+    <EntitySet Name="ImportBillDetails" EntityType="Self.ImportBillDetail" />
+    <AssociationSet Name="FK_Cart_Customer" Association="Self.FK_Cart_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CosmeticLine_Category" Association="Self.FK_CosmeticLine_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="CosmeticLine" EntitySet="CosmeticLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_CosmeticLine" Association="Self.FK_Product_CosmeticLine">
+      <End Role="CosmeticLine" EntitySet="CosmeticLines" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImportBill_Provider" Association="Self.FK_ImportBill_Provider">
+      <End Role="Provider" EntitySet="Providers" />
+      <End Role="ImportBill" EntitySet="ImportBills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImportBill_Staff" Association="Self.FK_ImportBill_Staff">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="ImportBill" EntitySet="ImportBills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImportBillDetail_ImportBill" Association="Self.FK_ImportBillDetail_ImportBill">
+      <End Role="ImportBill" EntitySet="ImportBills" />
+      <End Role="ImportBillDetail" EntitySet="ImportBillDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_News_User" Association="Self.FK_News_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OderDetail_Order" Association="Self.FK_OderDetail_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OderDetail" EntitySet="OderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OderDetail_SpecificProduct" Association="Self.FK_OderDetail_SpecificProduct">
+      <End Role="SpecificProduct" EntitySet="SpecificProducts" />
+      <End Role="OderDetail" EntitySet="OderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SpecificProduct_Product" Association="Self.FK_SpecificProduct_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="SpecificProduct" EntitySet="SpecificProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImportBillDetail_SpecificProduct" Association="WebCosmeticModel.FK_ImportBillDetail_SpecificProduct">
+      <End Role="SpecificProduct" EntitySet="SpecificProducts" />
+      <End Role="ImportBillDetail" EntitySet="ImportBillDetails" />
+    </AssociationSet>
+    <EntitySet Name="Reviews" EntityType="WebCosmeticModel.Review" />
+    <AssociationSet Name="FK_Review_Customer" Association="WebCosmeticModel.FK_Review_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_ImportBillDetail_SpecificProduct">
+    <End Type="WebCosmeticModel.SpecificProduct" Role="SpecificProduct" Multiplicity="1" />
+    <End Type="WebCosmeticModel.ImportBillDetail" Role="ImportBillDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpecificProduct">
+        <PropertyRef Name="SpId" />
+      </Principal>
+      <Dependent Role="ImportBillDetail">
+        <PropertyRef Name="SpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="ReviewId" />
+    </Key>
+    <Property Name="ReviewId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Vote" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CusId" Type="Int64" />
+    <NavigationProperty Name="Customer" Relationship="WebCosmeticModel.FK_Review_Customer" FromRole="Review" ToRole="Customer" />
+  </EntityType>
+  <Association Name="FK_Review_Customer">
+    <End Type="WebCosmeticModel.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="WebCosmeticModel.Review" Role="Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CusId" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="CusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

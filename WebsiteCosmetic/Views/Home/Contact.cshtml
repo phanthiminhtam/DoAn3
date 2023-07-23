@@ -1,0 +1,338 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+@section Script{
+  
+    <script src="/Assets/Font/js/Contact.js"></script>
+}
+<header class="header-section d-none d-xl-block">
+    <div class="header-wrapper">
+        <div class="header-bottom header-bottom-color--golden section-fluid sticky-header sticky-color--golden">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 d-flex align-items-center justify-content-between">
+                        <!-- Start Header Logo -->
+                        <div class="header-logo">
+                            <div class="logo">
+                                <a href="/"><img src="/Assets/Font/images/logo/logo_black.png" alt=""></a>
+                            </div>
+                        </div>
+                        <!-- End Header Logo -->
+                        <!-- Start Header Main Menu -->
+                        <div class="main-menu menu-color--black menu-hover-color--green">
+                            <nav>
+                                <ul>
+                                    <li class="has-dropdown">
+                                        <a class="active main-menu-link" href="/">Trang chủ </a>
+                                    </li>
+                                    <li class="has-dropdown has-megaitem">
+                                        <a href="/SanPham/ChitietSP"> Sản phẩm <i class="fa fa-angle-down"></i></a>
+                                        <!-- Mega Menu -->
+                                        <div class="mega-menu">
+                                            <ul class="mega-menu-inner">
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Trangdiem" class="mega-menu-item-title">Trang Điểm</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="shop-grid-sidebar-left.html">Cushion</a></li>
+                                                        <li><a href="shop-grid-sidebar-right.html">Kem nền</a></li>
+                                                        <li><a href="shop-full-width.html">Phấn má hồng</a></li>
+                                                        <li><a href="shop-list-sidebar-left.html">Xịt khoáng</a></li>
+                                                        <li><a href="shop-list-sidebar-right.html">Son Môi</a></li>
+                                                        <li><a href="shop-list-sidebar-left.html">Son dưỡng</a></li>
+                                                        <li><a href="shop-list-sidebar-right.html">Phấn mắt</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Chamsocda" class="mega-menu-item-title">Chăm Sóc Da</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="cart.html">Mask giấy</a></li>
+                                                        <li><a href="empty-cart.html">Mặt nạ</a></li>
+                                                        <li><a href="wishlist.html">Sữa rửa mặt</a></li>
+                                                        <li><a href="compare.html">Dưỡng da mặt</a></li>
+                                                        <li><a href="checkout.html">Tẩy da chết</a></li>
+                                                        <li><a href="login.html">Dưỡng da mắt</a></li>
+                                                        <li><a href="my-account.html">Lotion</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Nuochoa" class="mega-menu-item-title">Nước Hoa</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="ChitietSP.html">Nước hoa nữ</a></li>
+                                                        <li><a href="product-details-variable.html">Nước hoa nam</a></li>
+                                                        <li><a href="product-details-affiliate.html">Xịt body</a></li>
+                                                        <li><a href="product-details-group.html">Sữa tắm</a></li>
+                                                        <li><a href="product-details-single-slide.html">Tẩy lông</a></li>
+                                                        <li><a href="product-details-group.html">Sữa dưỡng thể</a></li>
+                                                        <li><a href="product-details-single-slide.html">Kem dưỡng tay</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Phukien" class="mega-menu-item-title">Phụ Kiện</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="product-details-tab-left.html">Dụng cụ trang điểm</a></li>
+                                                        <li><a href="product-details-tab-right.html">Phụ kiện làm đẹp</a></li>
+                                                        <li><a href="product-details-gallery-left.html">Sơn móng tay</a></li>
+                                                        <li><a href="product-details-gallery-right.html">Rửa móng</a></li>
+                                                        <li><a href="product-details-sticky-left.html">Mút đánh phấn</a></li>
+                                                        <li><a href="product-details-sticky-right.html">Mặt nạ nén</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <div class="menu-banner">
+                                                <a href="#" class="menu-banner-link">
+                                                    <img class="menu-banner-img" src="/Assets/Font/images/banner/banner-blackV.jpg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="/Home/Khuyenmai">Khuyến mãi</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="#">Tin tức<i class="fa fa-angle-down"></i></a>
+                                        <!-- Sub Menu -->
+                                        <ul class="sub-menu">
+                                            <li><a href="/Home/About">Về chúng tôi</a></li>
+                                            <li><a href="/Tintuc/Review">Review sản phẩm</a></li>
+                                            <li><a href="/Tintuc/CSdoitra">Chính sách đổi trả</a></li>
+                                            <li><a href="/Tintuc/Login">Đăng nhập</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">Thương Hiệu <i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="#">3CE</a></li>
+                                            <li><a href="#">3W Clinic</a></li>
+                                            <li><a href="">A'PIEU</a></li>
+                                            <li><a href="">Aritaum</a></li>
+                                            <li><a href="">Avene</a></li>
+                                            <li><a href="">Bath and body works</a></li>
+                                            <li><a href="">Benton</a></li>
+                                            <li><a href="">Biodema</a></li>
+                                            <li><a href="">Careline</a></li>
+                                            <li><a href="">City color</a></li>
+                                            <li><a href="">Covergril</a></li>
+                                            <li><a href="">DHC</a></li>
+                                            <li><a href="">Dr.Belmeur</a></li>
+                                            <li><a href="">Etude House</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/Home/Contact">Liên hệ</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- End Header Main Menu Start -->
+                        <!-- Start Header Action Link -->
+                        <ul class="header-action-link action-color--black action-hover-color--green">
+                            <li>
+                                <a href="#offcanvas-wishlish" class="offcanvas-toggle">
+                                    <i class="icon-heart"></i>
+                                    <span class="item-count">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#offcanvas-add-cart" class="offcanvas-toggle">
+                                    <i class="icon-bag"></i>
+                                    <span class="item-count">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#search">
+                                    <i class="icon-magnifier"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">
+                                    <i class="icon-menu"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- End Header Action Link -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Start Header Area -->
+<!-- Start Mobile Header -->
+<div class="mobile-header mobile-header-bg-color--golden section-fluid d-lg-block d-xl-none">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex align-items-center justify-content-between">
+                <!-- Start Mobile Left Side -->
+                <div class="mobile-header-left">
+                    <ul class="mobile-menu-logo">
+                        <li>
+                            <a href="/">
+                                <div class="logo">
+                                    <img src="/Assets/Font/images/logo/logo_black.png" alt="">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Mobile Left Side -->
+                <!-- Start Mobile Right Side -->
+                <div class="mobile-right-side">
+                    <ul class="header-action-link action-color--black action-hover-color--golden">
+                        <li>
+                            <a href="#search">
+                                <i class="icon-magnifier"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#offcanvas-wishlish" class="offcanvas-toggle">
+                                <i class="icon-heart"></i>
+                                <span class="item-count">3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#offcanvas-add-cart" class="offcanvas-toggle">
+                                <i class="icon-bag"></i>
+                                <span class="item-count">3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#mobile-menu-offcanvas" class="offcanvas-toggle offside-menu">
+                                <i class="icon-menu"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Mobile Right Side -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="breadcrumb-section breadcrumb-bg-color--golden">
+    <div class="breadcrumb-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="breadcrumb-title">Liên hệ với chúng tôi</h3>
+                    <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                        <nav aria-label="breadcrumb">
+                            <ul>
+                                <li><a href="/">Trang chủ</a></li>
+                                <li class="active" aria-current="page">Liên hệ</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- ...:::: End Breadcrumb Section:::... -->
+<!-- ...::::Start Map Section:::... -->
+<div class="map-section" data-aos="fade-up" data-aos-delay="0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59585.571537620475!2d105.75589413649026!3d21.02875558175806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab5756f91033%3A0x576917442d674bfd!2zQ-G6p3UgR2nhuqV5LCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1662197623484!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- ...::::End  Map Section:::... -->
+<!-- ...::::Start Contact Section:::... -->
+<div class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <!-- Start Contact Details -->
+                <div class="contact-details-wrapper section-top-gap-100" data-aos="fade-up" data-aos-delay="0">
+                    <div class="contact-details">
+                        <!-- Start Contact Details Single Item -->
+                        <div class="contact-details-single-item">
+                            <div class="contact-details-icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="contact-details-content contact-phone">
+                                <a href="tel:+012345678102">+012 345 678 102</a>
+                                <a href="tel:+012345678102">+012 345 678 102</a>
+                            </div>
+                        </div> <!-- End Contact Details Single Item -->
+                        <!-- Start Contact Details Single Item -->
+                        <div class="contact-details-single-item">
+                            <div class="contact-details-icon">
+                                <i class="fa fa-globe"></i>
+                            </div>
+                            <div class="contact-details-content contact-phone">
+                                <a href="mailto:urname@email.com">urname@email.com</a>
+                                <a href="http://www.yourwebsite.com/">www.yourwebsite.com</a>
+                            </div>
+                        </div> <!-- End Contact Details Single Item -->
+                        <!-- Start Contact Details Single Item -->
+                        <div class="contact-details-single-item">
+                            <div class="contact-details-icon">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+                            <div class="contact-details-content contact-phone">
+                                <span>Address goes here,</span>
+                                <span>street, Crossroad 123.</span>
+                            </div>
+                        </div> <!-- End Contact Details Single Item -->
+                    </div>
+                    <!-- Start Contact Social Link -->
+                    <div class="contact-social">
+                        <h4>Follow Us</h4>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div> <!-- End Contact Social Link -->
+                </div> <!-- End Contact Details -->
+            </div>
+            <div class="col-lg-8">
+                <div class="contact-form section-top-gap-100" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Gửi thông tin liên hệ</h3>
+                    <form id="contact-form" action="https://htmlmail.hasthemes.com/nazmul/mail.php" method="post">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="default-form-box mb-20">
+                                    <label for="contact-name">Họ tên</label>
+                                    <input name="name" type="text" id="txtName">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="default-form-box mb-20">
+                                    <label for="contact-email">Email</label>
+                                    <input name="email" type="email" id="txtEmail">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="default-form-box mb-20">
+                                    <label for="contact-subject">Số điện thoại</label>
+                                    <input name="subject" type="text" id="txtMobile">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="default-form-box mb-20">
+                                    <label for="contact-message">Nội dung</label>
+                                    <textarea name="message" id="txtContent" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button class="btn btn-lg btn-black-default-hover" id="btnSend" type="submit">Gửi</button>
+                            </div>
+                            <p class="form-messege"></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

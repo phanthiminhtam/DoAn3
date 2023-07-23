@@ -1,0 +1,31 @@
+﻿@model List<Models.Framework.OderDetail>
+<ul class="offcanvas-wishlist">
+    @foreach (var item in Model)
+    {
+        <li class="offcanvas-wishlist-item-single">
+            <div class="offcanvas-wishlist-item-block">
+                <a href="#" class="offcanvas-wishlist-item-image-link">
+                    <img src="@item.SpecificProduct.Image" alt="" class="offcanvas-wishlist-image">
+                </a>
+                <div class="offcanvas-wishlist-item-content">
+                    <a href="#" class="offcanvas-wishlist-item-link">@item.SpecificProduct.Product.ProName</a>
+                    <div class="offcanvas-wishlist-item-details">
+                        @if (item.SpecificProduct.Offer != null)
+                        {
+                            <span class="offcanvas-wishlist-item-details-price price">@(item.SpecificProduct.Price- item.SpecificProduct.Price*item.SpecificProduct.Offer)</span>
+                        }
+                        else
+                        {
+                            <span class="offcanvas-wishlist-item-details-price price">@item.SpecificProduct.Price</span>
+                        }   
+                    </div>
+                </div>
+            </div>
+            <div class="offcanvas-wishlist-item-delete text-right">
+                <a href="#" class="offcanvas-wishlist-item-delete"><i class="fa fa-trash-o"></i></a>
+            </div>
+        </li>
+    }
+
+
+</ul>

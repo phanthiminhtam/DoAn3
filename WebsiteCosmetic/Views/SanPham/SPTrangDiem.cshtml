@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Models.Framework.CosmeticLine>
+@foreach (var item in Model)
+{
+    if (item.Category.CatName == "Trang điểm")
+    {
+        foreach (var child in item.Products)
+        {
+            foreach (var sp in child.SpecificProducts)
+            {
+                <div class="col-xl-4 col-sm-6 col-12">
+                    <!-- Start Product Default Single Item -->
+                    <div class="product-default-single-item product-color--golden" data-aos="fade-up" data-aos-delay="0">
+                        <div class="image-box">
+                            <a href="product-details-default.html" class="image-link">
+                                <img src="@sp.Image" alt="">
+                                @*<img src="/Assets/Font/images/anhSP/td1.jpg" alt="">*@
+                            </a>
+                            <div class="action-link">
+                                <div class="action-link-left">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Thêm giỏ hàng</a>
+                                </div>
+                                <div class="action-link-right">
+                                    @*<a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>*@
+                                    <a href="wishlist.html"><i class="icon-heart"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="content-left">
+                                <h6 class="title"><a href="product-details-default.html">@sp.Product.ProName</a></h6>
+                                <ul class="review-star">
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="empty"><i class="ion-android-star"></i></li>
+                                </ul>
+                            </div>
+                            <div class="content-right">
+
+                                <span class="price">@sp.Price</span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- End Product Default Single Item -->
+                </div>
+            }
+        }
+
+    }
+}
+
+

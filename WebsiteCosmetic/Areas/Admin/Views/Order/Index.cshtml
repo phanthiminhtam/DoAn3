@@ -1,0 +1,220 @@
+﻿
+@{
+    ViewBag.Title = "QUẢN LÝ ĐƠN HÀNG";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    <script src="/Scripts/angular.min.js"></script>
+}
+<div class="container-fluid" ng-app="orderApp" ng-controller="OrderController">
+    <table class="table table-striped dt-responsive nowrap table-bordered text-center font-17" id="datatable-buttons">
+        <thead class="thead-dark">
+            <tr>
+                <th class="text-white font-18">STT</th>
+                <th class="text-white font-18">
+                    Ngày đặt
+                </th>
+                <th class="text-white font-18">
+                    Số điện thoại
+                </th>
+                <th class="text-white font-18">Chi tiết</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in datas">
+                <td>{{$index+1}}</td>
+                <td>
+                    {{data.OrderDate | date: "dd/MM/yyyy"}}
+                </td>
+                <td>
+                    {{data.PhoneNumber}}
+                </td>
+                <td>
+                    <a href="#" class="mdi mdi-eye" id="btnDetail" style="font-size: 25px"></a>
+                    <a href="#" class=" remixicon-checkbox-line" style="font-size: 25px"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="font-size: 25px; color: brown">Thêm nhà cung cấp</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-10" style="font-size:18px">Tên nhà cung cấp</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="VD: Nguyễn Văn Anh" type="text" ng-model="prv.PrvName" />
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-6" style="font-size:18px">Địa chỉ</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="Xã, Huyện, Tỉnh..." type="text" ng-model="prv.Address" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label col-md-8" style="font-size:18px">Số điện thoại</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="VD: 0909 099 099 (*)" ng-model="prv.PhoneNumber" />
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label col-md-6" style="font-size:18px">Email</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="VD:email@gmail" type="text" ng-model="prv.Email" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" ng-click="Save()">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" id="bigModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <!-- Logo & title -->
+                           
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h4>Địa chỉ người nhận</h4>
+                                    <address>
+                                        Phan Thị Minh Tâm<br>
+                                        367 Nguyễn Thiện Thuật,Nhân Hoà<br>
+                                        Mỹ Hào, Hưng Yên<br>
+                                        Số điện thoại: 0392572493
+                                    </address>
+                                </div> <!-- end col -->
+                                <div class="col-md-4 offset-md-2">
+                                    <h4 style="margin-left:50px;">Thời gian đặt hàng</h4>
+                                    <div class="mt-3 float-right" style="margin-top:0px !important; margin-right:23px;">
+                                        <p class="m-b-10"><strong>Ngày đặt : </strong> <span class="float-right"> &nbsp;&nbsp;&nbsp;&nbsp; 14/11/2022 </span></p>
+                                        <p class="m-b-10"><strong>Tình trạng : </strong> <span class="float-right"><span class="badge badge-danger">Chưa xác thực</span></span></p>
+                                        <p class="m-b-10"><strong>Mã đơn hàng : </strong> <span class="float-right">02 </span></p>
+                                    </div>
+                                </div><!-- end col -->
+
+                            </div>
+                            <!-- end row -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <table class="table mt-4 table-centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>STT</th>
+                                                    <th>Tên mỹ phẩm</th>
+                                                    <th style="width: 15%">Số lượng</th>
+                                                    <th style="width: 15%">Giá bán</th>
+                                                    <th style="width: 15%" class="text-right">Tổng tiền</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <b>Kem dưỡng môi</b>
+                                                    </td>
+                                                    <td>2</td>
+                                                    <td>100.000đ</td>
+                                                    <td class="text-right">200.000đ</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <b>Sữa dưỡng thể</b> <br>
+                                                    </td>
+                                                    <td>1</td>
+                                                    <td>200.000đ</td>
+                                                    <td class="text-right">200.000</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div> <!-- end table-responsive -->
+                                </div> <!-- end col -->
+                            </div>
+                            <!-- end row -->
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="">
+                                        <h4 class="text-muted">Chú ý:</h4>
+                                        <p class="text-muted" style="font-size:15px">
+                                            Giao hàng buổi sáng
+                                        </p>
+                                    </div>
+                                </div> <!-- end col -->
+                                <div class="col-sm-6">
+                                    <div class="float-right">
+                                        <p><b>Tổng số tiền:</b> <span class="float-right"> &nbsp;&nbsp; 300.000đ</span></p>
+                                        <p><b>Phí ship:</b> <span class="float-right"> &nbsp;&nbsp;&nbsp; 30.000đ</span></p>
+                                        <h3>Tổng tiền: &nbsp;&nbsp; 330.000đ</h3>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div> <!-- end col -->
+                            </div>
+                            <!-- end row -->
+
+                            <div class="mt-4 mb-1">
+                                <div class="text-right d-print-none">
+                                    <a href="javascript:window.print()" class="btn btn-primary waves-effect waves-light"><i class="mdi mdi-printer mr-1"></i> Print</a>
+                                </div>
+                            </div>
+                        </div> <!-- end card-box -->
+                    </div> <!-- end col -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Script{
+    <script>
+        var orderApp = angular.module("orderApp", []);
+        orderApp.controller("OrderController", OrderController);
+
+        function OrderController($scope, $http) {
+            $http.get("/Admin/Order/getAllOrder").then(function (res) {
+                $scope.datas = JSON.parse(res.data)
+            }, function (error) {
+                alert("failed")
+            })
+
+            $(document).on('click', '#btnDetail', function () {
+                $('#bigModal').modal('show');
+            })
+        }
+    </script>
+    <script src="\Assets\Admin\libs\datatables\jquery.dataTables.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.bootstrap4.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.responsive.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\responsive.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.buttons.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.html5.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.flash.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.print.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.keyTable.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.select.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\pdfmake.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\vfs_fonts.js"></script>
+    <!-- third party js ends -->
+    <!-- Datatables init -->
+    <script src="\Assets\Admin\js\pages\datatables.init.js"></script>
+
+}

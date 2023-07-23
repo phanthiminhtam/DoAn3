@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Models.Framework.User>
+
+@{
+    ViewBag.Title = "QUẢN LÝ NGƯỜI QUẢN TRỊ";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    int tt = 1;
+}
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary " })
+</p>
+<table class="table table-striped dt-responsive nowrap table-bordered text-center font-17" id="datatable-buttons">
+    <thead class="thead-dark ">
+        <tr>
+            <th class="text-white font-18">
+                STT
+            </th>
+            <th class="text-white font-18">
+                Tên đăng nhập
+            </th>
+            <th class="text-white font-18">
+                Mật khẩu
+            </th>
+            <th class="text-white font-18">
+                Trạng thái
+            </th>
+            <th class="text-white font-18" >Sửa/Xoá</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@(tt++)</th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassWord)
+                </td>
+                <td class="form-check">
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.UserId }, new { @class = "remixicon-edit-box-fill", @style = "font-size:25px" })
+
+                    @Html.ActionLink(" ", "Delete", new { id = item.UserId }, new
+                       {
+                          @class = "remixicon-delete-bin-line",
+                          @style = "font-size:25px",
+                          @Onclick = "return confirm('Bạn có muốn xoá người dùng này không?')"
+                      }) 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Script{
+    <script src="\Assets\Admin\libs\datatables\jquery.dataTables.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.bootstrap4.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.responsive.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\responsive.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.buttons.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.html5.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.flash.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.print.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.keyTable.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.select.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\pdfmake.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\vfs_fonts.js"></script>
+    <!-- third party js ends -->
+    <!-- Datatables init -->
+    <script src="\Assets\Admin\js\pages\datatables.init.js"></script>
+}

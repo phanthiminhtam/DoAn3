@@ -1,0 +1,46 @@
+﻿@model Models.Framework.Category
+
+@{
+    ViewBag.Title = "SỬA LOẠI MỸ PHẨM";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CatId)
+        <div class="form-group">
+            @Html.LabelFor(model => model.CatName,"Tên loại", htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:22px" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CatName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CatName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description,"Mô tả", htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:22px" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control ", @id = "txtContent" }, id = "txtContent" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("HUỶ", "Index", null, new { @class = "btn btn-danger  ", @style = "font-size:15px" })
+                <button type="submit" class="btn btn-primary" style="font-size:15px">Save</button>
+            </div>
+        </div>
+    </div>
+}
+@section Script{
+    <script>
+        var editor = CKEDITOR.replace('txtContent', {
+            customConfig: '/Assets/plugins/ckeditor/config.js',
+        })
+    </script>
+}

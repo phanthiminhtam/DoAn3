@@ -1,0 +1,296 @@
+﻿@model Models.Framework.SpecificProduct
+@{
+    ViewBag.Title = "THÊM CHI TIẾT MỸ PHẨM";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section styles{
+    <style>
+        .file-upload-content {
+            display: none;
+            text-align: center;
+        }
+
+        .input-file, .input-file__main {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            outline: none;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .image-upload-wrap {
+            border: 2px dashed #999;
+            position: relative;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            margin-left:20px;
+            margin-top:-20px;
+        }
+
+            .image-dropping,
+            .image-upload-wrap:hover {
+                border: 2px dashed #0a58ca;
+            }
+
+        .drag-text {
+            margin: auto;
+            font-size: 12px;
+        }
+
+
+        .file-upload-image {
+            max-width: 80px;
+            max-height: 100px;
+        }
+
+        .remove-image {
+            width: 80px;
+            line-height: 20px;
+            margin: 0;
+            color: #fff;
+            background: #cd4535;
+            border: none;
+            border-radius: 4px;
+            border-bottom: 4px solid #b02818;
+            transition: all .2s ease;
+            outline: none;
+            font-weight: 600;
+            font-size: 15px;
+            margin-top: 5px;
+        }
+
+            .remove-image:hover {
+                background: #c13b2a;
+                color: #ffffff;
+                transition: all .2s ease;
+                cursor: pointer;
+            }
+
+            .remove-image:active {
+                border: 0;
+                transition: all .2s ease;
+            }
+
+        .drag-text p {
+            text-align: center;
+        }
+
+        .wrap-file-box {
+            margin-top: 30px;
+        }
+    </style>
+}
+@using (Html.BeginForm("Create", "SpecificProduct", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.ProId, "Tên mỹ phẩm", htmlAttributes: new { @class = "control-label col-md-4", @style = "font-size:18px" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ProId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ProId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+             <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Type, "Kiểu", htmlAttributes: new { @class = "control-label col-md-4", @style = "font-size:18px" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Type, new { htmlAttributes = new { @class = "form-control" }, @class= "form-control",@required = "" })
+                    @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group  col-md-6">
+                @Html.LabelFor(model => model.Measure, "Đơn vị tính", htmlAttributes: new { @class = "control-label col-md-4", @style = "font-size:18px" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Measure, new { htmlAttributes = new { @class = "form-control" }, @class = "form-control", @required = "" })
+                    @Html.ValidationMessageFor(model => model.Measure, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Price, "Giá", htmlAttributes: new { @class = "control-label col-md-4", @style = "font-size:18px" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" },@class = "form-control", @required = "" })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Offer, "Khuyến mại", htmlAttributes: new { @class = "control-label col-md-4", @style = "font-size:18px" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Offer, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Offer, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.StartedDate, "Ngày bắt đầu", htmlAttributes: new { @class = "control-label col-md-4", @style = "font-size:18px" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StartedDate, new { htmlAttributes = new { @class = "form-control", @id = "example-date", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.StartedDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Image, "Hình ảnh", htmlAttributes: new { @class = "control-label col-md-4", @style = "font-size:18px" })
+                <div class="col-md-10" style="display:flex">
+                    <div class="wrap-file-box" onclick="fileBoxClick(this)" style="margin-left:10px">
+                        <div class="image-upload-wrap">
+                            <input class="input-file__main input-file" type="file" name="file" accept="image/*" onchange="uploadImg(this)" ondragleave="dragLeaveBox(event)" ondragenter="DragEnter(event)" ondrop="dropImg(event)" />
+                            <div class="drag-text">
+                                <p class="text-nodragenter">Ảnh</p>
+                                <p class="text-dragenter"><i class="remixicon-add-fill"></i> Thêm ảnh</p>
+                            </div>
+                        </div>
+                        <div class="file-upload-content">
+                            <img class="file-upload-image" src="#" alt="your image">
+                            <div class="image-title-wrap">
+                                <button type="button" class="remove-image" onclick="removeImg(this)">Xóa</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrap-file-box" onclick="fileBoxClick(this)">
+                        <div class="image-upload-wrap">
+                            <input class="input-file__main input-file" type="file" name="file1" accept="image/*" onchange="uploadImg(this)" ondragleave="dragLeaveBox(event)" ondragenter="DragEnter(event)" ondrop="dropImg(event)" />
+                            <div class="drag-text">
+                                <p class="text-nodragenter">Ảnh</p>
+                                <p class="text-dragenter"><i class="remixicon-add-fill"></i> Thêm ảnh</p>
+                            </div>
+                        </div>
+                        <div class="file-upload-content">
+                            <img class="file-upload-image" src="#" alt="your image">
+                            <div class="image-title-wrap">
+                                <button type="button" class="remove-image" onclick="removeImg(this)">Xóa</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrap-file-box" onclick="fileBoxClick(this)">
+                        <div class="image-upload-wrap">
+                            <input class="input-file__main input-file" type="file" name="file2" accept="image/*" onchange="uploadImg(this)" ondragleave="dragLeaveBox(event)" ondragenter="DragEnter(event)" ondrop="dropImg(event)" />
+                            <div class="drag-text">
+                                <p class="text-nodragenter">Ảnh</p>
+                                <p class="text-dragenter"><i class="remixicon-add-fill"></i> Thêm ảnh</p>
+                            </div>
+                        </div>
+                        <div class="file-upload-content">
+                            <img class="file-upload-image" src="#" alt="your image">
+                            <div class="image-title-wrap">
+                                <button type="button" class="remove-image" onclick="removeImg(this)">Xóa</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.StopDate, "Ngày kết thúc", htmlAttributes: new { @class = "control-label col-md-4", @style = "font-size:18px" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StopDate, new { htmlAttributes = new { @class = "form-control", @id = "example-date", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.StopDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Huỷ", "Index", null, new { @class = "btn btn-danger  ", @style = "font-size:15px" })
+                <button type="submit" class="btn btn-primary " style="font-size:15px"><i class=""></i> Save</button>
+            </div>
+        </div>
+    </div>
+}
+@section Script{
+    <script>
+        /**uppload file */
+        var clickFile = document.createElement('div') //lưu thẻ bọc 1 ảnh khi click để truy xuất đến các phẩn tử con
+        function fileBoxClick(input) {
+            clickFile = input
+        }
+
+        //Hiển thị hình ảnh vừa chọn lên view
+        function uploadImg(input) {
+            const reader = new FileReader()
+
+            // Lấy thông tin tập tin được đăng tải
+            const file = input.files
+            // Đọc thông tin tập tin đã được đăng tải
+            reader.readAsDataURL(file[0])
+            // Lắng nghe quá trình đọc tập tin hoàn thành
+            reader.addEventListener("load", (event) => {
+                // Lấy chuỗi Binary thông tin hình ảnh
+                const img = event.target.result;
+                // Thực hiện hành động thêm chuỗi giá trị này vào thẻ IMG
+                $(clickFile).find('.file-upload-image').attr('src', img);
+                $(clickFile).find('.file-upload-content').show();
+                $(clickFile).find('.image-upload-wrap').hide();
+            })
+        }
+        function removeImg(input) {
+            let parentBox = $(input).parents(".wrap-file-box")
+            let file = $(parentBox).find('.input-file')
+            $(file).val('')
+            let Image = $(parentBox).find('.file-upload-image')
+            $(Image).attr("src", "")
+            $(parentBox).find('.file-upload-content').hide();
+            $(parentBox).find('.image-upload-wrap').show();
+        }
+
+        $('.image-upload-wrap').bind('dragover', function () {
+            $('.image-upload-wrap').addClass('image-dropping');
+        });
+        $('.image-upload-wrap').bind('dragleave', function () {
+            $('.image-upload-wrap').removeClass('image-dropping');
+        });
+        function dropImg(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            this.file = event.dataTransfer.files[0];
+            event.target.files = event.dataTransfer.files
+            const reader = new FileReader();
+            reader.onload = e => {
+                this.url = reader.result;
+
+                const dropDiv = $(event.target).parents(".wrap-file-box")
+                $(dropDiv).find('.file-upload-image').attr('src', this.url);
+                $(dropDiv).find('.file-upload-content').show();
+                $(dropDiv).find('.image-upload-wrap').hide();
+            };
+            reader.readAsDataURL(this.file);
+        }
+
+        function DragEnter(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            const parent = $(event.target).parents(".image-upload-wrap")
+            $(parent).find(".text-dragenter").show()
+            $(parent).find(".text-nodragenter").hide()
+            $(parent).css("border", "2px dashed #0a58ca")
+        }
+
+
+        function dragLeaveBox(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            const parent = $(event.target).parents(".image-upload-wrap")
+            $(parent).find(".text-dragenter").hide()
+            $(parent).find(".text-nodragenter").show()
+            $(parent).css("border", "2px dashed #999")
+
+        }
+    </script>
+}
+

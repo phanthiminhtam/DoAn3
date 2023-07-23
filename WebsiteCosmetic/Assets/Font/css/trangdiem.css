@@ -1,0 +1,4 @@
+.sidebar-menu > li a:hover{
+    color: #e09212;
+    text-decoration: underline;
+}

@@ -1,0 +1,23 @@
+﻿@model List<Models.Framework.Category>
+<div class="mega-menu">
+    <ul class="mega-menu-inner">
+        @foreach (var item in Model)
+        {
+            <li class="mega-menu-item">
+                <a href="/SanPham/Trangdiem/@item.CatId" class="mega-menu-item-title">@item.CatName</a>
+                <ul class="mega-menu-sub">
+                    @foreach (var child in item.CosmeticLines)
+                    {
+                        <li><a href="shop-grid-sidebar-left.html">@child.LineName</a></li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+    <div class="menu-banner">
+        <a href="#" class="menu-banner-link">
+            <img class="menu-banner-img" src="/Assets/Font/images/banner/banner-blackV.jpg" alt="">
+        </a>
+    </div>
+</div>
+

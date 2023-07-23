@@ -1,0 +1,49 @@
+﻿@model List<Models.Framework.OderDetail>
+@{
+    double t = 0;
+}
+@section Script{
+    <script src="/Assets/Font/js/ThemSP.js"></script>
+}
+<ul class="offcanvas-cart">
+    @foreach (var item in Model)
+    {
+
+        if (item.SpecificProduct.Offer == null)
+        {
+            t = t + item.Quantity * item.SpecificProduct.Price;
+        }
+        else
+        {
+            t = t + (double)(item.Quantity * (item.SpecificProduct.Price - item.SpecificProduct.Offer * item.SpecificProduct.Price));
+        }
+        <li class="offcanvas-cart-item-single">
+            <div class="offcanvas-cart-item-block">
+                <a href="#" class="offcanvas-cart-item-image-link">
+                    <img src="@item.SpecificProduct.Image" alt="" class="offcanvas-cart-image">
+                </a>
+                <div class="offcanvas-cart-item-content">
+                    <a href="#" class="offcanvas-cart-item-link">@item.SpecificProduct.Product.ProName</a>
+                    <div class="offcanvas-cart-item-details">
+                        <span class="offcanvas-cart-item-details-quantity">@item.Quantity x </span>
+                        @if (item.SpecificProduct.Offer != null)
+                        {
+                            <span class="offcanvas-cart-item-details-price price">@(item.SpecificProduct.Price- item.SpecificProduct.Price*item.SpecificProduct.Offer)</span>
+                        }
+                        else
+                        {
+                            <span class="offcanvas-cart-item-details-price price">@item.SpecificProduct.Price</span>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="offcanvas-cart-item-delete text-right">
+                <a href="#" class="offcanvas-cart-item-delete" id="btnDelete" data-id="@item.SpecificProduct.Product.ProId"><i class="fa fa-trash-o"></i></a>
+            </div>
+        </li>
+    }
+</ul>
+<div class="offcanvas-cart-total-price">
+    <span class="offcanvas-cart-total-price-text ">Tổng: <span class="price">@t</span> </span>
+    <span class="offcanvas-cart-total-price-value"> </span>
+</div>

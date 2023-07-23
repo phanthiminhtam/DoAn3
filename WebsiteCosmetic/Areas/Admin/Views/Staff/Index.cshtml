@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "QUẢN LÝ NHÂN VIÊN";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    <script src="/Scripts/angular.min.js"></script>
+
+}
+<div class="container-fluid" ng-app="staffApp" ng-controller="StaffController">
+    <p>
+        <a href="/Admin/Staff/Create" class="btn btn-primary ">Thêm loại</a>
+    </p>
+    <table class="table table-striped table-bordered text-center font-17 w-100 nowrap" id="scroll-horizontal-datatable">
+        <thead class="thead-dark ">
+            <tr>
+                <th class="text-white font-18">
+                    STT
+                </th>
+                <th class="text-white font-18">
+                    Tên nhân viên
+                </th>
+                <th class="text-white font-18">
+                    Địa chỉ
+                </th>
+                <th class="text-white font-18">
+                    Số điện thoại
+                </th>
+                <th class="text-white font-18">
+                    Email
+                </th>
+                <th class="text-white font-18">
+                    Chức vụ
+                </th>
+                <th class="text-white font-18">
+                    Lương cơ bản
+                </th>
+                <th class="text-white font-18">
+                    Ngày bắt đầu LV
+                </th>
+                <th class="text-white font-18">
+                    Loại hình LV
+                </th>
+                <th class="text-white font-18">
+                    Loại hợp đồng
+                </th>
+                <th class="text-white font-18">
+                    Sửa/Xoá
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in datas">
+                <td>{{$index+1}}</td>
+                <td>
+                    {{data.StaffName}}
+                </td>
+                <td>
+                    {{data.Address}}
+                </td>
+                <td>
+                    {{data.PhoneNumber}}
+                </td>
+                <td>
+                    {{data.Email}}
+                </td>
+                <td>
+                    {{data.Post}}
+                </td>
+                <td>
+                    {{data.BasicSalary}}
+                </td>
+                <td>
+                    {{data.StartDate | date: "dd/MM/yyyy"}}
+                </td>
+                <td>
+                    {{data.TypeWork}}
+                </td>
+                <td>
+                    {{data.ContractWork}}
+                </td>
+                <td>
+                    <a href="/Admin/Staff/Edit/{{data.StaffId}}" ng-click="Edit($index)" class="remixicon-edit-box-fill" style="font-size: 25px"></a>
+                    <a href="#" class="remixicon-delete-bin-line" ng-click="Delete(data,$index)" style="font-size:25px"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@section Script{
+
+    <script src="/Assets/Admin/js/AngularJs/DeleteAngular.js"></script>
+    <script src="\Assets\Admin\libs\datatables\jquery.dataTables.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.bootstrap4.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.responsive.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\responsive.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.buttons.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.html5.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.flash.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.print.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.keyTable.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.select.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\pdfmake.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\vfs_fonts.js"></script>
+    <!-- third party js ends -->
+    <!-- Datatables init -->
+    <script src="\Assets\Admin\js\pages\datatables.init.js"></script>  
+}
+
+

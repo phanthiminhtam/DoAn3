@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Models.Framework.News>
+@foreach (var item in Model)
+{
+    <div class="col-md-6 col-12 mb-6">
+        <!-- Start Product Default Single Item -->
+        <div class="blog-list blog-grid-single-item blog-color--golden" data-aos="fade-up" data-aos-delay="0">
+            <div class="image-box">
+                <a href="#" class="image-link">
+                    <img class="img-fluid" style="height: 300px;" src="@item.Image" alt="">
+                </a>
+            </div>
+            <div class="content">
+                <h6 class="title"><a href="/TinTuc/ChitietBV/@item.NewId">@item.Title</a></h6>
+                <ul class="post-meta">
+                    <li>Người đăng : <a href="#" class="author">@item.User.UserName</a></li>
+                    <li>Thời gian: <a href="#" class="date">@Html.FormatValue(item.PublicDate,"{0:dd/MM/yyyy}") </a></li>
+                </ul>
+                <p>@Html.Raw(item.Content)</p>
+                <a href="#" class="read-more-btn icon-space-left">Đọc thêm <span class="icon"><i class="ion-ios-arrow-thin-right"></i></span></a>
+            </div>
+        </div>
+        <!-- End Product Default Single Item -->
+    </div>
+}

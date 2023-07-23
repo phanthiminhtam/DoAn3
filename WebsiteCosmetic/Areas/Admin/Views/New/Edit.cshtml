@@ -1,0 +1,66 @@
+﻿@model Models.Framework.News
+@{
+    ViewBag.Title = "SỬA TIN TỨC";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm("Create", "New", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Title, "Chủ đề", htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:18px" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.UserId, "Tên người viết", htmlAttributes: new { @class = "control-label col-md-4", @style = "font-size:18px" })
+                <div class="col-md-10">
+                    @Html.DropDownList("UserId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Image, "Hình ảnh", htmlAttributes: new { @class = "control-label col-md-4", @style = "font-size:18px" })
+                <div class="col-md-10">
+                    <input type="file" id="file" name="file" />
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.PublicDate, "Ngày đăng", htmlAttributes: new { @class = "control-label col-md-4", @style = "font-size:18px" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PublicDate, new { htmlAttributes = new { @class = "form-control", @id = "example-date", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.PublicDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Content, "Nội dung", htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:18px" })
+            <div class="col-11">
+                @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" }, id = "txtContent" })
+                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Huỷ", "Index", null, new { @class = "btn btn-danger  ", @style = "font-size:15px" })
+                <button type="submit" class="btn btn-primary " style="font-size:15px"><i class=""></i> Save</button>
+            </div>
+        </div>
+    </div>
+}
+
+@section Script{
+    <script>
+        var editor = CKEDITOR.replace('txtContent', {
+            customConfig: '/Assets/plugins/ckeditor/config.js',
+        })
+    </script>
+}
+

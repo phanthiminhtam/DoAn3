@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Models.Framework.Review>
+
+@foreach (var item in Model)
+{
+    if (item.Status == true)
+    {
+        <li class="comment-list">
+            <div class="comment-wrapper">
+                <div class="comment-img">
+                    <img src="/Assets/Admin/images/email/unnamed.png" alt="">
+                </div>
+                <div class="comment-content">
+                    <div class="comment-content-top">
+                        <div class="comment-content-left">
+                            <h6 class="comment-name">@item.Customer.CusName</h6>
+                            @if (item.Vote == 1)
+                            {
+                                <ul class="review-star">
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="empty"><i class="ion-android-star"></i></li>
+                                    <li class="empty"><i class="ion-android-star"></i></li>
+                                    <li class="empty"><i class="ion-android-star"></i></li>
+                                </ul>
+                            }
+                            else if (item.Vote == 2)
+                            {
+                                <ul class="review-star">
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="empty"><i class="ion-android-star"></i></li>
+                                    <li class="empty"><i class="ion-android-star"></i></li>
+                                </ul>
+                            }
+                            else if (item.Vote == 3)
+                            {
+                                <ul class="review-star">
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="empty"><i class="ion-android-star"></i></li>
+                                </ul>
+                            }
+                            else
+                            {
+                                <ul class="review-star">
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                    <li class="fill"><i class="ion-android-star"></i></li>
+                                </ul>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="para-content">
+                        <p>@item.Content</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Start - Review Comment Reply-->
+           
+        </li>
+    }
+}

@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Models.Framework.SpecificProduct>
+@{
+    ViewBag.Title = "QUẢN LÝ CHI TIẾT MỸ PHẨM";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    int tt = 1;
+}
+
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary " })
+</p>
+<table class="table table-striped table-bordered text-center font-17 w-100 nowrap" id="scroll-horizontal-datatable">
+    <thead class="thead-dark">
+        <tr>
+            <th class="text-white font-18">
+                STT
+            </th>
+            <th class="text-white font-18">
+                Hình ảnh
+        
+            </th>
+            <th class="text-white font-18">
+                Đơn vị tính
+      
+            </th>
+            <th class="text-white font-18">
+                Kiểu
+       
+            </th>
+            <th class="text-white font-18">
+                Giá
+     
+            </th>
+            <th class="text-white font-18">
+                Khuyến mãi
+     
+            </th>
+            <th class="text-white font-18">
+                Số lượng
+     
+            </th>
+            <th class="text-white font-18">
+                Tên mỹ phẩm
+    
+            </th>
+            <th class="text-white font-18">
+                Ngày bắt đầu
+
+            </th>
+            <th class="text-white font-18">
+                Ngày kết thúc
+            </th>
+            <th class="text-white font-18">
+                Sửa
+            </th>
+            <th class="text-white font-18">
+                Xóa
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(tt++)</td>
+                <td>
+                    @if (@item.Image != null)
+                    {
+                        <img src="@item.Image" style="width: 100px; height:100px" />
+                    }
+                    else
+                    {
+                        <img src="/FileUL/images.png" style="width: 100px" />
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Measure)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Offer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity, item.Quantity = 0)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProName)
+                </td>
+                <td>
+                    @Html.FormatValue(item.StartedDate, "{0:dd/MM/yyyy}")
+                </td>
+                <td>
+                    @Html.FormatValue(item.StopDate, "{0:dd/MM/yyyy}")
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.SpId }, new { @class = "remixicon-edit-box-fill", @style = "font-size:25px" })
+
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Delete", new { id = item.SpId }, new
+                    {
+                        @class = "remixicon-delete-bin-line",
+                        @style = "font-size:25px",
+                    @Onclick = "return confirm('Bạn có muốn xoá chi tiết mỹ phẩm này không?')"
+                    })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Script{
+    <script src="\Assets\Admin\libs\datatables\jquery.dataTables.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.bootstrap4.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.responsive.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\responsive.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.buttons.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.html5.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.flash.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.print.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.keyTable.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.select.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\pdfmake.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\vfs_fonts.js"></script>
+    <!-- third party js ends -->
+    <!-- Datatables init -->
+    <script src="\Assets\Admin\js\pages\datatables.init.js"></script>
+    
+}
+

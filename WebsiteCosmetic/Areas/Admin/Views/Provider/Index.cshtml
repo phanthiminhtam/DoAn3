@@ -1,0 +1,183 @@
+﻿
+@{
+    ViewBag.Title = "QUẢN LÝ NHÀ CUNG CẤP";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    <script src="/Scripts/angular.min.js"></script>
+}
+<div class="container-fluid" ng-app="providerApp" ng-controller="ProviderController">
+    <p>
+        <a href="#" class="btn btn-primary" id="btnAdd">Thêm mới</a>
+    </p>
+
+    <table class="table table-striped dt-responsive nowrap table-bordered text-center font-17" id="datatable-buttons">
+        <thead class="thead-dark ">
+            <tr>
+                <th class="text-white font-18">
+                    STT
+                </th>
+                <th class="text-white font-18">
+                    Tên nhà cung cấp
+                </th>
+                <th class="text-white font-18">
+                    Địa chỉ
+                </th>
+                <th class="text-white font-18">
+                    Số điện thoại
+                </th>
+                <th class="text-white font-18">
+                    Email
+                </th>
+                <th class="text-white font-18">
+                    Sửa/Xoá
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in datas">
+                <td>{{$index+1}}</td>
+                <td>
+                    {{data.PrvName}}
+                </td>
+                <td>
+                    {{data.Address}}
+                </td>
+                <td>
+                    {{data.PhoneNumber}}
+                </td>
+                <td>
+                    {{data.Email}}
+                </td>
+                <td>
+                    <a href="#" data-toggle="modal" data-target="#exampleModal_Edit" ng-click="Edit(data)" class="remixicon-edit-box-fill" style="font-size: 25px"></a>
+                    <a href="#" class="remixicon-delete-bin-line" ng-click="Delete(data,$index)" style="font-size:25px"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    @*Thêm nhà cung cấp*@
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="font-size: 25px; color: brown">Thêm nhà cung cấp</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-10" style="font-size:18px">Tên nhà cung cấp</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="VD: Nguyễn Văn Anh" type="text" ng-model="prv.PrvName" />
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-6" style="font-size:18px">Địa chỉ</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="Xã, Huyện, Tỉnh..." type="text" ng-model="prv.Address" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label col-md-8" style="font-size:18px">Số điện thoại</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="VD: 0909 099 099 (*)" ng-model="prv.PhoneNumber" />
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label col-md-6" style="font-size:18px">Email</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="VD:email@gmail" type="text" ng-model="prv.Email" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn btn-primary" ng-click="Save()">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @*Sửa nhà cung cấp*@
+
+    <div class="modal fade" id="exampleModal_Edit" dtabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" style="font-size: 25px; color: brown">Sửa nhà cung cấp</h5>
+                    <button type="button" class="close" id="btn_close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-10" style="font-size:18px">Tên nhà cung cấp</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="VD: Nguyễn Văn Anh" type="text" ng-model="provider.PrvName" />
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="control-label col-sm-6" style="font-size:18px">Địa chỉ</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="Xã, Huyện, Tỉnh..." type="text" ng-model="provider.Address" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label col-md-8" style="font-size:18px">Số điện thoại</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="VD: 0909 099 099 (*)" ng-model="provider.PhoneNumber" />
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label col-md-6" style="font-size:18px">Email</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" placeholder="VD:email@gmail" type="text" ng-model="provider.Email" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn btn-primary" ng-click="SaveEdit()">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+@section Script{
+    <script src="/Assets/Admin/js/AngularJs/Provider_Angular.js"></script>
+    <script src="\Assets\Admin\libs\datatables\jquery.dataTables.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.bootstrap4.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.responsive.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\responsive.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.buttons.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.html5.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.flash.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.print.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.keyTable.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.select.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\pdfmake.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\vfs_fonts.js"></script>
+    <script>
+        $('#btnAdd').off('click').on('click', function () {
+            $('#exampleModal').modal('show');
+        })
+    </script>
+}
+
+

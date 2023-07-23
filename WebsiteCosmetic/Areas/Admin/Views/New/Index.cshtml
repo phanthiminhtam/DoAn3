@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Models.Framework.News>
+@{
+    ViewBag.Title = "QUẢN LÝ BÀI VIẾT";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    int tt = 1;
+}
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary " })
+</p>
+<table class="table table-striped table-bordered text-center font-17 w-100 nowrap" id="scroll-horizontal-datatable">
+    <thead class="thead-dark">
+        <tr>
+            <th class="text-white font-18">STT</th>
+            <th class="text-white font-18">
+                Hình ảnh
+            </th>
+            <th class="text-white font-18">
+                Tiêu đề
+            </th>
+            <th class="text-white font-18">
+                Nội dung
+            </th>
+            <th class="text-white font-18">
+                Ngày đăng
+            </th>
+            <th class="text-white font-18">
+                Người đăng
+            </th>
+            <th class="text-white font-18">Sửa/Xoá</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(tt++)</td>
+                <td>
+                    @if (@item.Image != null)
+                    {
+                        <img src="@item.Image" style="width: 100px" />
+                    }
+                    else
+                    {
+                        <img src="/FileUL/images.png" style="width: 100px" />
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td style=" overflow: hidden;">
+                    @Html.Raw(item.Content)
+                </td>
+                <td>
+                    @Html.FormatValue(item.PublicDate,"{0:dd/MM/yyyy}")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.NewId }, new { @class = "remixicon-edit-box-fill", @style = "font-size:25px" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.NewId }, new
+                   {
+                       @class = "remixicon-delete-bin-line",
+                       @style = "font-size:25px",
+                       @Onclick = "return confirm('Bạn có muốn xoá tin tức này không?')"
+                   })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Script{
+    <script src="\Assets\Admin\libs\datatables\jquery.dataTables.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.bootstrap4.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.responsive.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\responsive.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.buttons.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.bootstrap4.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.html5.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.flash.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\buttons.print.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.keyTable.min.js"></script>
+    <script src="\Assets\Admin\libs\datatables\dataTables.select.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\pdfmake.min.js"></script>
+    <script src="\Assets\Admin\libs\pdfmake\vfs_fonts.js"></script>
+    <!-- third party js ends -->
+    <!-- Datatables init -->
+    <script src="\Assets\Admin\js\pages\datatables.init.js"></script>
+}

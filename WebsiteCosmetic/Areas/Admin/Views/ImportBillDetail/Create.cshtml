@@ -1,0 +1,166 @@
+﻿@model Models.Framework.ImportBillDetail
+@{
+    ViewBag.Title = "NHẬP HOÁ ĐƠN";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    <link rel="shortcut icon" href="/Assets/Font/images/favicon.ico" type="image/png">
+    <link rel="stylesheet" href="/Assets/Font/css/vendor/vendor.min.css">
+    <link rel="stylesheet" href="/Assets/Font/css/plugins/plugins.min.css">
+    <link rel="stylesheet" href="/Assets/Font/css/style.min.css">
+}
+<div class="col-sm-12 col-md-6">
+    <div id="datatable-buttons_filter" class="dataTables_filter">
+        <label style="display:flex">
+            Search: <input type="search" style="width:200px" class="form-control form-control-sm" placeholder="" aria-controls="datatable-buttons">
+        </label>
+    </div>
+</div>
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>ImportBillDetail</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImportPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ImportPrice, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ImportPrice, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ExpiredDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ExpiredDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ExpiredDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImpId, "ImpId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ImpId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ImpId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SpId, "SpId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("SpId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SpId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MoneyTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MoneyTotal, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MoneyTotal, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+<div class="form-row">
+    <div class="form-group col-md-8">
+        <div class="table_desc">
+            <div class="table_page table-responsive">
+                <table>
+                    <!-- Start Cart Table Head -->
+                    <thead>
+                        <tr>
+                            <th class="product_remove">Xoá</th>
+                            <th class="product_thumb">Tên mỹ phẩm</th>
+                            <th class="product_name">Đơn giá</th>
+                            <th class="product-price">Số lượng</th>
+                            <th class="product_total">Thành tiền</th>
+                        </tr>
+                    </thead> <!-- End Cart Table Head -->
+                    <tbody>
+                        <!-- Start Cart Single Item-->
+                        <tr>
+                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                            <td class="product_name">
+                                <div class="col-md-12">
+                                    @Html.DropDownList("SpId", null, htmlAttributes: new { @class = "form-control" , @style = "-webkit-appearance: none;-webkit-border-radius: 0px;" })
+                                    @Html.ValidationMessageFor(model => model.SpId, "", new { @class = "text-danger" })
+                                </div>
+                            </td>
+                            <td class="product-price">
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.ImportPrice, new { htmlAttributes = new { @class = "form-control", @style = "border:none" } })
+                                    @Html.ValidationMessageFor(model => model.ImportPrice, "", new { @class = "text-danger" })
+                                </div>
+                            </td>
+                            <td class="product_quantity"> <input min="1" max="100" value="1" type="number"></td>
+                            <td class="product_total">$130.00</td>
+                        </tr> <!-- End Cart Single Item-->
+                        <!-- Start Cart Single Item-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-md-4">
+        <div class="coupon_code right" style="margin-top:-2px" data-aos="fade-up" data-aos-delay="400">
+            <h3>Cart Totals</h3>
+            <div class="coupon_inner">
+                <div class="cart_subtotal">
+                    <div class="col-md-7" style="margin-left:-10px">
+                        @Html.DropDownList("ImpId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ImpId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="cart_subtotal">
+                    <p>Subtotal</p>
+                    <p class="cart_amount">$215.00</p>
+                </div>
+                <div class="cart_subtotal ">
+                    <p>Shipping</p>
+                    <p class="cart_amount"><span>Flat Rate:</span> $255.00</p>
+                </div>
+                <a href="#">Calculate shipping</a>
+
+                <div class="cart_subtotal">
+                    <p>Total</p>
+                    <p class="cart_amount">$215.00</p>
+                </div>
+                <div class="checkout_btn">
+                    <a href="#" class="btn btn-md btn-golden">Proceed to Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@section Script{
+    <script src="/Assets/Font/js/vendor/vendor.min.js"></script>
+    <script src="/Assets/Font/js/plugins/plugins.min.js"></script>
+    <!-- Main JS -->
+    <script src="/Assets/Font/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous">
+    </script>
+}

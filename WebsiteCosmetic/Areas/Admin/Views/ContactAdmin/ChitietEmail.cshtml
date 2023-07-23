@@ -1,0 +1,82 @@
+﻿@model Models.Framework.Contact
+
+@{
+    ViewBag.Title = "CHI TIẾT EMAIL";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="row">
+    <!-- Right Sidebar -->
+    <div class="col-12">
+        <div class="card-box">
+            <!-- Left sidebar -->
+            <div class="inbox-leftbar">
+
+                <a href="email-compose.html" class="btn btn-danger btn-block waves-effect waves-light" style="font-size:20px">Phản hồi</a>
+
+                <div class="mail-list mt-4" style="font-size:17px">
+                    <a href="/Admin/ContactAdmin/Index" class="list-group-item border-0 text-danger font-weight-bold">
+                        <i class="mdi mdi-inbox font-18 align-middle mr-2"></i>Hộp thư đến
+                        @{Html.RenderAction("Count", "ContactAdmin");}
+                    </a>
+                    <a href="#" class="list-group-item border-0"><i class="mdi mdi-star font-18 align-middle mr-2"></i>Có gắn dấu sao</a>
+                    <a href="#" class="list-group-item border-0"><i class="mdi mdi-file-document-box font-18 align-middle mr-2"></i>Thư nháp<span class="badge badge-info float-right ml-2 mt-1">32</span></a>
+                    <a href="#" class="list-group-item border-0"><i class="mdi mdi-send font-18 align-middle mr-2"></i>Đã gửi</a>
+                    <a href="#" class="list-group-item border-0"><i class="mdi mdi-delete font-18 align-middle mr-2"></i>Thùng rác</a>
+                </div>
+            </div>
+            <!-- End Left sidebar -->
+
+            <div class="inbox-rightbar">
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-light dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false">
+                        <i class="mdi mdi-dots-horizontal font-18"></i> Khác
+                        <i class="mdi mdi-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <span class="dropdown-header">Chọn :</span>
+                        <a class="dropdown-item" href="javascript: void(0);">Thư chưa đọc</a>
+                        <a class="dropdown-item" href="javascript: void(0);">Thư đã đọc</a>
+                        <a class="dropdown-item" href="javascript: void(0);">Thêm dấu sao</a>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    
+                    <hr>
+
+                    <div class="media mb-4 mt-1">
+                        <img class="d-flex mr-2 rounded-circle avatar-sm" src="/Assets/Admin/images/email/unnamed.png" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <span class="float-right">@Model.CreateDate</span>
+                            <h6 class="m-0 font-14">@Model.ContactName</h6>
+                            <small class="text-muted">Từ: @Model.Email (@Model.PhoneNumber)</small>
+                        </div>
+                    </div>
+
+                    @*<p><b>Hi Bro...</b></p>*@
+                    <p>@Model.Content</p>
+                
+                    <hr>
+                </div>
+                <!-- end .mt-4 -->
+
+                <div class="row">
+                    <div class="col-7 mt-1">
+                        Showing 1 - 20
+                    </div> <!-- end col-->
+                    <div class="col-5">
+                        <div class="btn-group float-right">
+                            <button type="button" class="btn btn-light btn-sm"><i class="mdi mdi-chevron-left"></i></button>
+                            <button type="button" class="btn btn-info btn-sm"><i class="mdi mdi-chevron-right"></i></button>
+                        </div>
+                    </div> <!-- end col-->
+                </div>
+                <!-- end row-->
+            </div>
+            <!-- end inbox-rightbar-->
+
+            <div class="clearfix"></div>
+        </div> <!-- end card-box -->
+
+    </div> <!-- end Col -->
+</div>

@@ -1,0 +1,337 @@
+﻿
+@{
+    ViewBag.Title = "MyCcount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<header class="header-section d-none d-xl-block">
+    <div class="header-wrapper">
+        <div class="header-bottom header-bottom-color--golden section-fluid sticky-header sticky-color--golden">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 d-flex align-items-center justify-content-between">
+                        <!-- Start Header Logo -->
+                        <div class="header-logo">
+                            <div class="logo">
+                                <a href="/"><img src="/Assets/Font/images/logo/logo_black.png" alt=""></a>
+                            </div>
+                        </div>
+                        <!-- End Header Logo -->
+                        <!-- Start Header Main Menu -->
+                        <div class="main-menu menu-color--black menu-hover-color--green">
+                            <nav>
+                                <ul>
+                                    <li class="has-dropdown">
+                                        <a class="active main-menu-link" href="/">Trang chủ </a>
+                                    </li>
+                                    <li class="has-dropdown has-megaitem">
+                                        <a href="/SanPham/ChitietSP"> Sản phẩm <i class="fa fa-angle-down"></i></a>
+                                        <!-- Mega Menu -->
+                                        <div class="mega-menu">
+                                            <ul class="mega-menu-inner">
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Trangdiem" class="mega-menu-item-title">Trang Điểm</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="shop-grid-sidebar-left.html">Cushion</a></li>
+                                                        <li><a href="shop-grid-sidebar-right.html">Kem nền</a></li>
+                                                        <li><a href="shop-full-width.html">Phấn má hồng</a></li>
+                                                        <li><a href="shop-list-sidebar-left.html">Xịt khoáng</a></li>
+                                                        <li><a href="shop-list-sidebar-right.html">Son Môi</a></li>
+                                                        <li><a href="shop-list-sidebar-left.html">Son dưỡng</a></li>
+                                                        <li><a href="shop-list-sidebar-right.html">Phấn mắt</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Chamsocda" class="mega-menu-item-title">Chăm Sóc Da</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="cart.html">Mask giấy</a></li>
+                                                        <li><a href="empty-cart.html">Mặt nạ</a></li>
+                                                        <li><a href="wishlist.html">Sữa rửa mặt</a></li>
+                                                        <li><a href="compare.html">Dưỡng da mặt</a></li>
+                                                        <li><a href="checkout.html">Tẩy da chết</a></li>
+                                                        <li><a href="login.html">Dưỡng da mắt</a></li>
+                                                        <li><a href="my-account.html">Lotion</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Nuochoa" class="mega-menu-item-title">Nước Hoa</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="ChitietSP.html">Nước hoa nữ</a></li>
+                                                        <li><a href="product-details-variable.html">Nước hoa nam</a></li>
+                                                        <li><a href="product-details-affiliate.html">Xịt body</a></li>
+                                                        <li><a href="product-details-group.html">Sữa tắm</a></li>
+                                                        <li><a href="product-details-single-slide.html">Tẩy lông</a></li>
+                                                        <li><a href="product-details-group.html">Sữa dưỡng thể</a></li>
+                                                        <li><a href="product-details-single-slide.html">Kem dưỡng tay</a></li>
+                                                    </ul>
+                                                </li>
+                                                <!-- Mega Menu Sub Link -->
+                                                <li class="mega-menu-item">
+                                                    <a href="/SanPham/Phukien" class="mega-menu-item-title">Phụ Kiện</a>
+                                                    <ul class="mega-menu-sub">
+                                                        <li><a href="product-details-tab-left.html">Dụng cụ trang điểm</a></li>
+                                                        <li><a href="product-details-tab-right.html">Phụ kiện làm đẹp</a></li>
+                                                        <li><a href="product-details-gallery-left.html">Sơn móng tay</a></li>
+                                                        <li><a href="product-details-gallery-right.html">Rửa móng</a></li>
+                                                        <li><a href="product-details-sticky-left.html">Mút đánh phấn</a></li>
+                                                        <li><a href="product-details-sticky-right.html">Mặt nạ nén</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <div class="menu-banner">
+                                                <a href="#" class="menu-banner-link">
+                                                    <img class="menu-banner-img" src="/Assets/Font/images/banner/banner-blackV.jpg" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="/Home/Khuyenmai">Khuyến mãi</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                        <a href="#">Tin tức<i class="fa fa-angle-down"></i></a>
+                                        <!-- Sub Menu -->
+                                        <ul class="sub-menu">
+                                            <li><a href="/Home/About">Về chúng tôi</a></li>
+                                            <li><a href="/Tintuc/Review">Review sản phẩm</a></li>
+                                            <li><a href="/Tintuc/CSdoitra">Chính sách đổi trả</a></li>
+                                            <li><a href="/Tintuc/Login">Đăng nhập</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">Thương Hiệu <i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            <li><a href="#">3CE</a></li>
+                                            <li><a href="#">3W Clinic</a></li>
+                                            <li><a href="">A'PIEU</a></li>
+                                            <li><a href="">Aritaum</a></li>
+                                            <li><a href="">Avene</a></li>
+                                            <li><a href="">Bath and body works</a></li>
+                                            <li><a href="">Benton</a></li>
+                                            <li><a href="">Biodema</a></li>
+                                            <li><a href="">Careline</a></li>
+                                            <li><a href="">City color</a></li>
+                                            <li><a href="">Covergril</a></li>
+                                            <li><a href="">DHC</a></li>
+                                            <li><a href="">Dr.Belmeur</a></li>
+                                            <li><a href="">Etude House</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="/Home/Contact">Liên hệ</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- End Header Main Menu Start -->
+                        <!-- Start Header Action Link -->
+                        <ul class="header-action-link action-color--black action-hover-color--green">
+                            <li>
+                                <a href="#offcanvas-wishlish" class="offcanvas-toggle">
+                                    <i class="icon-heart"></i>
+                                    <span class="item-count">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#offcanvas-add-cart" class="offcanvas-toggle">
+                                    <i class="icon-bag"></i>
+                                    <span class="item-count">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#search">
+                                    <i class="icon-magnifier"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#offcanvas-about" class="offacnvas offside-about offcanvas-toggle">
+                                    <i class="icon-menu"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- End Header Action Link -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Start Header Area -->
+<!-- Start Mobile Header -->
+<div class="mobile-header mobile-header-bg-color--golden section-fluid d-lg-block d-xl-none">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex align-items-center justify-content-between">
+                <!-- Start Mobile Left Side -->
+                <div class="mobile-header-left">
+                    <ul class="mobile-menu-logo">
+                        <li>
+                            <a href="/">
+                                <div class="logo">
+                                    <img src="/Assets/Font/images/logo/logo_black.png" alt="">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Mobile Left Side -->
+                <!-- Start Mobile Right Side -->
+                <div class="mobile-right-side">
+                    <ul class="header-action-link action-color--black action-hover-color--golden">
+                        <li>
+                            <a href="#search">
+                                <i class="icon-magnifier"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#offcanvas-wishlish" class="offcanvas-toggle">
+                                <i class="icon-heart"></i>
+                                <span class="item-count">3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#offcanvas-add-cart" class="offcanvas-toggle">
+                                <i class="icon-bag"></i>
+                                <span class="item-count">3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#mobile-menu-offcanvas" class="offcanvas-toggle offside-menu">
+                                <i class="icon-menu"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Mobile Right Side -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="breadcrumb-section breadcrumb-bg-color--golden">
+    <div class="breadcrumb-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="breadcrumb-title">My Account</h3>
+                    <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                        <nav aria-label="breadcrumb">
+                            <ul>
+                                <li><a href="/">Trang chủ</a></li>
+                                <li><a href="#">Tài khoản</a></li>
+                                <li class="active" aria-current="page">My Account</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- ...:::: End Breadcrumb Section:::... -->
+<!-- ...:::: Start Account Dashboard Section:::... -->
+<div class="account-dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-3">
+                <!-- Nav tabs -->
+                <div class="dashboard_tab_button" data-aos="fade-up" data-aos-delay="0">
+                    <ul role="tablist" class="nav flex-column dashboard-list">
+                        <li><a href="#dashboard" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover active">Tổng quan</a></li>
+                        <li> <a href="#orders" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover">Đơn đặt hàng</a></li>
+                        <li><a href="#downloads" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover">Chi tiết đơn hàng</a></li>
+                        <li><a href="#address" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover">Địa chỉ</a></li>
+                        <!-- <li><a href="#account-details" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover">Chi tiết tài khoản</a></li> -->
+                        <li><a href="login.html" class="nav-link btn btn-block btn-md btn-black-default-hover">login</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-9">
+                <!-- Tab panes -->
+                <div class="tab-content dashboard_content" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tab-pane fade show active" id="dashboard">
+                        <h4>Nói chung</h4>
+                        <p>Từ trang tổng quan tài khoản của bạn, bạn có thể dễ dàng kiểm tra và xem các đơn đặt hàng gần đây của mình, quản lý địa chỉ giao hàng và thanh toán cũng như chỉnh sửa mật khẩu và chi tiết tài khoản của bạn.</p>
+                    </div>
+                    <div class="tab-pane fade" id="orders">
+                        <h4>Đơn đã đặt gần đây</h4>
+                        <div class="table_page table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Thời gian</th>
+                                        <th>Trạng thái</th>
+                                        <th>Tổng tiền</th>
+                                        <th>Xem giỏ hàng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>May 10, 2018</td>
+                                        <td><span class="success">Completed</span></td>
+                                        <td>$25.00 for 1 item </td>
+                                        <td><a href="cart.html" class="view">view</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>May 10, 2018</td>
+                                        <td>Processing</td>
+                                        <td>$17.00 for 1 item </td>
+                                        <td><a href="cart.html" class="view">view</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="downloads">
+                        <h4>Downloads</h4>
+                        <div class="table_page table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Thời gian giao</th>
+                                        <th>Tình trạng</th>
+                                        <th>Tải chi tiết đơn hàng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Shopnovilla - Free Real Estate PSD Template</td>
+                                        <td>May 10, 2018</td>
+                                        <td><span class="danger">Expired</span></td>
+                                        <td><a href="#" class="view">Click Here To Download Your File</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Organic - ecommerce html template</td>
+                                        <td>Sep 11, 2018</td>
+                                        <td>Never</td>
+                                        <td><a href="#" class="view">Click Here To Download Your File</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="address">
+                        <p>Các địa chỉ sau sẽ được sử dụng trên trang thanh toán theo mặc định.</p>
+                        <h5 class="billing-address">Địa chỉ thanh toán</h5>
+                        <a href="checkout.html" class="view">Edit</a>
+                        <!-- <p><strong>Bobby Jackson</strong></p> -->
+                        <address>
+                            House #15<br>
+                            Road #1<br>
+                            Block #C <br>
+                            Banasree <br>
+                            Dhaka <br>
+                            1212
+                        </address>
+                        <p>Bangladesh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
